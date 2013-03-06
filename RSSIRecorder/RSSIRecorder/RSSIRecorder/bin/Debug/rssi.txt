@@ -22,3 +22,23 @@ NorthMain	-58	2013-03-05T22:05:07.5333344-08:00
 NorthMain	-47	2013-03-05T22:05:09.5484496-08:00
 NorthMain	-56	2013-03-05T22:05:11.5595646-08:00
 NorthMain	-45	2013-03-05T22:05:13.5706797-08:00
+insert into RSSITable values('NorthMain', -28, '2013-03-06T07:59:26.0818867-08:00');
+insert into RSSITable values('NorthMain', -26, '2013-03-06T07:59:27.9329926-08:00');
+insert into RSSITable values('NorthMain', -33, '2013-03-06T07:59:29.9381072-08:00');
+insert into RSSITable values('NorthMain', -40, '2013-03-06T07:59:31.9552226-08:00');
+insert into RSSITable values('NorthMain', -25, '2013-03-06T07:59:33.9653376-08:00');
+insert into RSSITable values('NorthMain', -30, '2013-03-06T07:59:35.9204494-08:00');
+insert into RSSITable values('NorthMain', -30, '2013-03-06T07:59:37.9285643-08:00');
+insert into RSSITable values('NorthMain', -33, '2013-03-06T07:59:39.9406794-08:00');
+insert into RSSITable values('NorthMain', -43, '2013-03-06T07:59:41.9517944-08:00');
+insert into RSSITable values('NorthMain', -44, '2013-03-06T07:59:43.9639095-08:00');
+insert into RSSITable values('NorthMain', -42, '2013-03-06T07:59:45.9210214-08:00');
+insert into RSSITable values('NorthMain', -43, '2013-03-06T07:59:47.9271362-08:00');
+insert into RSSITable values('NorthMain', -43, '2013-03-06T07:59:49.9432515-08:00');
+insert into RSSITable values('NorthMain', -41, '2013-03-06T07:59:51.9533664-08:00');
+insert into [RSSITable] values('NorthMain', -34, '2013-03-06 08:05:31.5667');
+insert into [RSSITable] values('NorthMain', -30, '2013-03-06 08:05:33.4709');
+insert into [RSSITable] values('NorthMain', -29, '2013-03-06 08:05:35.4860');
+insert into [RSSITable] values('NorthMain', -29, '2013-03-06 08:05:37.4941');
+insert into [RSSITable] values('NorthMain', -27, '2013-03-06 08:05:39.5092');
+insert into [RSSITable] values('NorthMain', -26, '2013-03-06 08:05:41.4583');

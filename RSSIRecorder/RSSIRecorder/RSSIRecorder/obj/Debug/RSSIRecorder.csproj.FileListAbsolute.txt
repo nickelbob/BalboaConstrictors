@@ -8,3 +8,12 @@ C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\obj\Debug\RSSIRecor
 C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\obj\Debug\RSSIRecorder.pdb
 C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\EntityFramework.dll
 C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\EntityFramework.xml
+C:\Users\nick\Documents\GitHub\BalboaConstrictors\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\RSSIRecorder.exe.config
+C:\Users\nick\Documents\GitHub\BalboaConstrictors\RSSIRecorder\RSSIRecorder\RSSIRecorder\obj\Debug\RSSIRecorder.exe
+C:\Users\nick\Documents\GitHub\BalboaConstrictors\RSSIRecorder\RSSIRecorder\RSSIRecorder\obj\Debug\RSSIRecorder.pdb
+C:\Users\nick\Documents\GitHub\BalboaConstrictors\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\RSSIRecorder.exe
+C:\Users\nick\Documents\GitHub\BalboaConstrictors\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\RSSIRecorder.pdb
+C:\Users\nick\Documents\GitHub\BalboaConstrictors\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\EntityFramework.dll
+C:\Users\nick\Documents\GitHub\BalboaConstrictors\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\ManagedWifi.dll
+C:\Users\nick\Documents\GitHub\BalboaConstrictors\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\EntityFramework.xml
+C:\Users\nick\Documents\GitHub\BalboaConstrictors\RSSIRecorder\RSSIRecorder\RSSIRecorder\obj\Debug\RSSIRecorder.csprojResolveAssemblyReference.cache
