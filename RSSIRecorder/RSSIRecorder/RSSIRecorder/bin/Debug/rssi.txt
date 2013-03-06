@@ -1,0 +1,24 @@
+NorthMain	-53	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-57	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-55	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-47	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-57	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-47	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-46	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-47	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-56	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-56	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-54	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-51	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-48	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-48	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-53	Tuesday, March 05, 2013 10:02 PM
+NorthMain	-55	2013-03-05T22:04:57.6447688-08:00
+NorthMain	-54	2013-03-05T22:04:59.5488777-08:00
+NorthMain	-46	2013-03-05T22:05:01.5599927-08:00
+NorthMain	-58	2013-03-05T22:05:03.5791082-08:00
+NorthMain	-50	2013-03-05T22:05:05.5822228-08:00
+NorthMain	-58	2013-03-05T22:05:07.5333344-08:00
+NorthMain	-47	2013-03-05T22:05:09.5484496-08:00
+NorthMain	-56	2013-03-05T22:05:11.5595646-08:00
+NorthMain	-45	2013-03-05T22:05:13.5706797-08:00

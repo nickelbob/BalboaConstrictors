@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RSSIRecorderModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="RSSIRecorderModelStoreContainer">
+    <EntitySet Name="RSSIRecords" EntityType="RSSIRecorderModel.Store.RSSIRecords" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="RSSIRecords">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SSID" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="SignalStrength" Type="int" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+  </EntityType>
+</Schema>

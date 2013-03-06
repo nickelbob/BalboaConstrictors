@@ -1,0 +1,10 @@
+C:\Users\nickelbob\Documents\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\RSSIRecorder.exe.config
+C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\RSSIRecorder.exe.config
+C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\RSSIRecorder.exe
+C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\RSSIRecorder.pdb
+C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\ManagedWifi.dll
+C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\obj\Debug\RSSIRecorder.csprojResolveAssemblyReference.cache
+C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\obj\Debug\RSSIRecorder.exe
+C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\obj\Debug\RSSIRecorder.pdb
+C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\EntityFramework.dll
+C:\Users\nick\Dropbox\RSSIRecorder\RSSIRecorder\RSSIRecorder\bin\Debug\EntityFramework.xml
