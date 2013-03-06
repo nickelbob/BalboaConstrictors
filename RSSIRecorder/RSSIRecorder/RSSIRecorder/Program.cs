@@ -85,45 +85,52 @@ namespace RSSIRecorder
 
         private static void getRSSI(Object state)
         {
-            RSSIRecorderEntities entity = new RSSIRecorderEntities();
-
-            Collection<String> connectedSsids = new Collection<string>();
-
-            foreach (WlanClient.WlanInterface wlanInterface in client.Interfaces)
+            try
             {
-                Wlan.Dot11Ssid ssid = wlanInterface.CurrentConnection.wlanAssociationAttributes.dot11Ssid;
-                string ssidName = new String(Encoding.ASCII.GetChars(ssid.SSID, 0, (int)ssid.SSIDLength));
-                connectedSsids.Add(ssidName);
+                RSSIRecorderEntities entity = new RSSIRecorderEntities();
 
-                Console.WriteLine(String.Format("{0}\t{1}\t{2}", ssidName, wlanInterface.RSSI.ToString(), DateTime.Now.ToString("o")));
+                Collection<String> connectedSsids = new Collection<string>();
 
-                if (useDatabase)
+                foreach (WlanClient.WlanInterface wlanInterface in client.Interfaces)
                 {
-                    entity.RSSIRecords.Add(new RSSIRecord()
-                    {
-                        CreatedOnUtc = DateTime.Now,
-                        SignalStrength = wlanInterface.RSSI,
-                        SSID = ssidName
-                    });
+                    Wlan.Dot11Ssid ssid = wlanInterface.CurrentConnection.wlanAssociationAttributes.dot11Ssid;
+                    string ssidName = new String(Encoding.ASCII.GetChars(ssid.SSID, 0, (int)ssid.SSIDLength));
+                    connectedSsids.Add(ssidName);
 
-                    entity.SaveChanges();
-                }
-                else
-                {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true))
+                    Console.WriteLine(String.Format("{0}\t{1}\t{2}", ssidName, wlanInterface.RSSI.ToString(), DateTime.Now.ToString("o")));
+
+                    if (useDatabase)
                     {
-                        if (outputSQL)
+                        entity.RSSIRecords.Add(new RSSIRecord()
                         {
-                            file.WriteLine(String.Format("insert into [{0}] values('{1}', {2}, '{3}');", tableName, ssidName, wlanInterface.RSSI.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff")));
-                        }
-                        else
+                            CreatedOnUtc = DateTime.Now,
+                            SignalStrength = wlanInterface.RSSI,
+                            SSID = ssidName
+                        });
+
+                        entity.SaveChanges();
+                    }
+                    else
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true))
                         {
-                            file.WriteLine(String.Format("{0}\t{1}\t{2}", ssidName, wlanInterface.RSSI.ToString(), DateTime.Now.ToString("o")));
+                            if (outputSQL)
+                            {
+                                file.WriteLine(String.Format("insert into [{0}] values('{1}', {2}, '{3}');", tableName, ssidName, wlanInterface.RSSI.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff")));
+                            }
+                            else
+                            {
+                                file.WriteLine(String.Format("{0}\t{1}\t{2}", ssidName, wlanInterface.RSSI.ToString(), DateTime.Now.ToString("o")));
+                            }
                         }
-                    }  
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occured while trying to retrieve signal strength. Message - " + ex.Message + " Stack Trace - " + ex.StackTrace);
+                return;
+            }
             
         }
     }
