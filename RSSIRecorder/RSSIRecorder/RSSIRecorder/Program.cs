@@ -32,6 +32,8 @@ namespace RSSIRecorder
                 Thread.Sleep(10000); // Simulating other work (10 seconds)
                 t.Dispose(); // Cancel the timer now
             }
+
+            //getRSSI(null);
         }
 
         private static void parseCmdLine(string[] args)
@@ -83,6 +85,11 @@ namespace RSSIRecorder
             }
         }
 
+        private static string GetStringForSSID(Wlan.Dot11Ssid ssid)
+        {
+            return Encoding.ASCII.GetString(ssid.SSID, 0, (int)ssid.SSIDLength);
+        }
+
         private static void getRSSI(Object state)
         {
             try
@@ -91,40 +98,65 @@ namespace RSSIRecorder
 
                 Collection<String> connectedSsids = new Collection<string>();
 
+                //foreach (WlanClient.WlanInterface wlanInterface in client.Interfaces)
+                //{
+                //    Wlan.WlanBssEntry[] wlanBssEntries = wlanInterface.GetNetworkBssList();
+                //    foreach (Wlan.WlanBssEntry network in wlanBssEntries)
+                //    {
+                //        byte[] macAddr = network.dot11Bssid;
+                //        string tMac = "";
+                //        for (int i = 0; i < macAddr.Length; i++)
+                //        {
+                //            tMac += macAddr[i].ToString("x2").PadLeft(2, '0').ToUpper();
+                //        }
+
+                //        Console.WriteLine("Found network with SSID {0}.", GetStringForSSID(network.dot11Ssid));
+                //        Console.WriteLine("Signal: {0}%.", network.linkQuality);
+                //        Console.WriteLine("BSS Type: {0}.", network.dot11BssType);
+                //        Console.WriteLine("MAC: {0}.", tMac);
+
+                //        Console.WriteLine("");
+                //    }
+                //}
+
                 foreach (WlanClient.WlanInterface wlanInterface in client.Interfaces)
                 {
-                    Wlan.Dot11Ssid ssid = wlanInterface.CurrentConnection.wlanAssociationAttributes.dot11Ssid;
-                    string ssidName = new String(Encoding.ASCII.GetChars(ssid.SSID, 0, (int)ssid.SSIDLength));
-                    connectedSsids.Add(ssidName);
-
-                    Console.WriteLine(String.Format("{0}\t{1}\t{2}", ssidName, wlanInterface.RSSI.ToString(), DateTime.Now.ToString("o")));
-
-                    if (useDatabase)
+                    Wlan.WlanBssEntry[] wlanBssEntries = wlanInterface.GetNetworkBssList();
+                    foreach (Wlan.WlanBssEntry network in wlanBssEntries)
                     {
-                        entity.RSSIRecords.Add(new RSSIRecord()
-                        {
-                            CreatedOnUtc = DateTime.Now,
-                            SignalStrength = wlanInterface.RSSI,
-                            SSID = ssidName
-                        });
+                        //Wlan.Dot11Ssid ssid = wlanInterface.CurrentConnection.wlanAssociationAttributes.dot11Ssid;
+                        string ssidName = GetStringForSSID(network.dot11Ssid);
+                        //connectedSsids.Add(ssidName);
 
-                        entity.SaveChanges();
-                    }
-                    else
-                    {
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true))
+                        Console.WriteLine(String.Format("{0}\t{1}\t{2}", ssidName, network.rssi.ToString(), DateTime.Now.ToString("o")));
+
+                        if (useDatabase)
                         {
-                            if (outputSQL)
+                            entity.RSSIRecords.Add(new RSSIRecord()
                             {
-                                file.WriteLine(String.Format("insert into [{0}] values('{1}', {2}, '{3}');", tableName, ssidName, wlanInterface.RSSI.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff")));
-                            }
-                            else
+                                CreatedOnUtc = DateTime.Now,
+                                SignalStrength = network.rssi,
+                                SSID = ssidName
+                            });
+                        }
+                        else
+                        {
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true))
                             {
-                                file.WriteLine(String.Format("{0}\t{1}\t{2}", ssidName, wlanInterface.RSSI.ToString(), DateTime.Now.ToString("o")));
+                                if (outputSQL)
+                                {
+                                    file.WriteLine(String.Format("insert into [{0}] values('{1}', {2}, '{3}');", tableName, ssidName, network.rssi.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff")));
+                                }
+                                else
+                                {
+                                    file.WriteLine(String.Format("{0}\t{1}\t{2}", ssidName, network.rssi.ToString(), DateTime.Now.ToString("o")));
+                                }
                             }
                         }
                     }
                 }
+
+                entity.SaveChanges();
             }
             catch (Exception ex)
             {
