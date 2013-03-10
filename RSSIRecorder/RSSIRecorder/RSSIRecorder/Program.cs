@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using NativeWifi;
 
 namespace RSSIRecorder
@@ -14,27 +11,42 @@ namespace RSSIRecorder
         //static RSSIRecorderEntities entity;
         static WlanClient client;
         static bool useDatabase = true, outputSQL = false, help = false;
-        static string fileName = String.Empty, tableName = "RSSIRecorder";
+        static string fileName = String.Empty, tableName = "RSSIRecorder", textToWriteToFile = String.Empty;
         static int pingInterval = 2000;
 
         static void Main(string[] args)
         {
-            parseCmdLine(args);
-
-            if (help)
-                return;
-
-            //entity = new RSSIRecorderEntities();
-            client = new WlanClient();
-            Console.WriteLine("Main thread: starting to ping -");
-
-            while (true)
+            try
             {
-                getRSSI();
-                Thread.Sleep(pingInterval);
-            }
+                parseCmdLine(args);
 
-            //getRSSI(null);
+                if (help)
+                    return;
+
+                //entity = new RSSIRecorderEntities();
+                client = new WlanClient();
+                Console.WriteLine("Main thread: starting to ping -");
+
+                Thread.Sleep(1000 - DateTime.Now.Millisecond);
+                Console.WriteLine("Press any key to stop...");
+
+                while (!Console.KeyAvailable)
+                {
+                    getRSSI(0);
+                    Thread.Sleep(pingInterval - (DateTime.Now.Millisecond % pingInterval));
+                }
+
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true))
+                {
+                    file.WriteLine(textToWriteToFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception occured while trying to retrieve signal strength. Message - " + ex.Message + " Stack Trace - " + ex.StackTrace);
+                return;
+            }
+            
         }
 
         private static void parseCmdLine(string[] args)
@@ -99,7 +111,7 @@ namespace RSSIRecorder
             return Encoding.ASCII.GetString(ssid.SSID, 0, (int)ssid.SSIDLength);
         }
 
-        private static void getRSSI()
+        private static void getRSSI(object state)
         {
             try
             {
@@ -155,17 +167,20 @@ namespace RSSIRecorder
             }
             else
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true))
-                {
+                
+                //using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true))
+                //{
                     if (outputSQL)
                     {
-                        file.WriteLine(String.Format("insert into [{0}] values('{1}', {2}, '{3}');", tableName, ssidName, rssi.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff")));
+                        textToWriteToFile += String.Format("insert into [{0}] values('{1}', {2}, '{3}');", tableName, ssidName, rssi.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff"));
+                        //file.WriteLine(String.Format("insert into [{0}] values('{1}', {2}, '{3}');", tableName, ssidName, rssi.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff")));
                     }
                     else
                     {
-                        file.WriteLine(String.Format("{0}\t{1}\t{2}", ssidName, rssi.ToString(), DateTime.Now.ToString("o")));
+                        textToWriteToFile += String.Format("{0}\t{1}\t{2}", ssidName, rssi.ToString(), DateTime.Now.ToString("o"));
+                        //file.WriteLine(String.Format("{0}\t{1}\t{2}", ssidName, rssi.ToString(), DateTime.Now.ToString("o")));
                     }
-                }
+                //}
             }
 
         }
