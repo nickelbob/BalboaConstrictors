@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "ImportKML";
+}
+
+<h2>ImportKML</h2>
+
+@using (Html.BeginForm("ImportKML", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" value="OK" />
+}
