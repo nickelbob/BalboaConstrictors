@@ -1,11 +1,17 @@
-﻿@{
+﻿@model ImportKMLModel
+@using GameDataProject.Models
+@{
     ViewBag.Title = "ImportKML";
 }
 
 <h2>ImportKML</h2>
 
+<span>@Html.Raw(Model.Status)</span>
+
 @using (Html.BeginForm("ImportKML", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    @Html.DropDownListFor(model => model.players, Model.playersSelect)
+        @Html.DropDownListFor(model => model.dataTypes, Model.dataTypeSelect)
     <input type="file" name="file" />
     <input type="submit" value="OK" />
 }

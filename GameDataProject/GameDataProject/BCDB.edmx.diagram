@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="39c4133fa4c44412b81a580acb2be2b6" Name="Diagram1">
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.DataType" Width="1.5" PointX="3.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.Event" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.EventPlayer" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.EventTypeParticipant" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.Player" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.PlayerTeam" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.Team" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.User" Width="1.5" PointX="0.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.UserPlayer" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_EventPlayer_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_EventPlayer_EventTypeParticipant" ManuallyRouted="false" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_EventPlayer_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_PlayerTeam_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_UserPlayer_Player" ManuallyRouted="false" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_PlayerTeam_Team" ManuallyRouted="false" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_UserPlayer_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.PlayerData" Width="1.5" PointX="5.0295354467954185" PointY="25.225036245409882" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_PlayerData_DataType" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_PlayerData_Player" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.Attribute" Width="1.5" PointX="5.1686934126395236" PointY="25.36030585754677" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.EventAttribute" Width="1.5" PointX="10.457332362633819" PointY="30.895728989921384" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_EventAttribute1_Attribute" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.EventType" Width="1.5" PointX="1.7922297184319374" PointY="23.489258881420483" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_Event_EventType" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_EventTypeParticipant_EventType" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.Game" Width="1.5" PointX="6.4479579154625348" PointY="29.163439376821479" />
+        <EntityTypeShape EntityType="BalboaConstrictorsModel.GameTeam" Width="1.5" PointX="3.7382669186863429" PointY="25.088991981506808" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_Event_Game" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_GameTeam_Game" />
+        <AssociationConnector Association="BalboaConstrictorsModel.FK_GameTeam_Team" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

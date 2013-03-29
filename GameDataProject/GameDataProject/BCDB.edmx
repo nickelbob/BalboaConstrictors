@@ -1,0 +1,998 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BalboaConstrictorsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="BalboaConstrictorsModelStoreContainer">
+          <EntitySet Name="Attribute" EntityType="BalboaConstrictorsModel.Store.Attribute" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DataType" EntityType="BalboaConstrictorsModel.Store.DataType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Event" EntityType="BalboaConstrictorsModel.Store.Event" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EventAttribute" EntityType="BalboaConstrictorsModel.Store.EventAttribute" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EventPlayer" EntityType="BalboaConstrictorsModel.Store.EventPlayer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EventType" EntityType="BalboaConstrictorsModel.Store.EventType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EventTypeParticipant" EntityType="BalboaConstrictorsModel.Store.EventTypeParticipant" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Game" EntityType="BalboaConstrictorsModel.Store.Game" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GameTeam" EntityType="BalboaConstrictorsModel.Store.GameTeam" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Player" EntityType="BalboaConstrictorsModel.Store.Player" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PlayerData" EntityType="BalboaConstrictorsModel.Store.PlayerData" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PlayerTeam" EntityType="BalboaConstrictorsModel.Store.PlayerTeam" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="BalboaConstrictorsModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Team" EntityType="BalboaConstrictorsModel.Store.Team" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="BalboaConstrictorsModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserPlayer" EntityType="BalboaConstrictorsModel.Store.UserPlayer" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Event_EventType" Association="BalboaConstrictorsModel.Store.FK_Event_EventType">
+            <End Role="EventType" EntitySet="EventType" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Event_Game" Association="BalboaConstrictorsModel.Store.FK_Event_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventAttribute1_Attribute" Association="BalboaConstrictorsModel.Store.FK_EventAttribute1_Attribute">
+            <End Role="Attribute" EntitySet="Attribute" />
+            <End Role="EventAttribute" EntitySet="EventAttribute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventPlayer_Event" Association="BalboaConstrictorsModel.Store.FK_EventPlayer_Event">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="EventPlayer" EntitySet="EventPlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventPlayer_EventTypeParticipant" Association="BalboaConstrictorsModel.Store.FK_EventPlayer_EventTypeParticipant">
+            <End Role="EventTypeParticipant" EntitySet="EventTypeParticipant" />
+            <End Role="EventPlayer" EntitySet="EventPlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventPlayer_Player" Association="BalboaConstrictorsModel.Store.FK_EventPlayer_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="EventPlayer" EntitySet="EventPlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventTypeParticipant_EventType" Association="BalboaConstrictorsModel.Store.FK_EventTypeParticipant_EventType">
+            <End Role="EventType" EntitySet="EventType" />
+            <End Role="EventTypeParticipant" EntitySet="EventTypeParticipant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameTeam_Game" Association="BalboaConstrictorsModel.Store.FK_GameTeam_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="GameTeam" EntitySet="GameTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameTeam_Team" Association="BalboaConstrictorsModel.Store.FK_GameTeam_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="GameTeam" EntitySet="GameTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerData_DataType" Association="BalboaConstrictorsModel.Store.FK_PlayerData_DataType">
+            <End Role="DataType" EntitySet="DataType" />
+            <End Role="PlayerData" EntitySet="PlayerData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerData_Player" Association="BalboaConstrictorsModel.Store.FK_PlayerData_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="PlayerData" EntitySet="PlayerData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerTeam_Player" Association="BalboaConstrictorsModel.Store.FK_PlayerTeam_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="PlayerTeam" EntitySet="PlayerTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerTeam_Team" Association="BalboaConstrictorsModel.Store.FK_PlayerTeam_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="PlayerTeam" EntitySet="PlayerTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPlayer_Player" Association="BalboaConstrictorsModel.Store.FK_UserPlayer_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="UserPlayer" EntitySet="UserPlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPlayer_User" Association="BalboaConstrictorsModel.Store.FK_UserPlayer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserPlayer" EntitySet="UserPlayer" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Attribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AttributeName" Type="nvarchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="DataType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DataType" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TimeOfEvent" Type="datetime2" Nullable="false" />
+          <Property Name="GameId" Type="int" Nullable="false" />
+          <Property Name="EventTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventAttribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AttributeId" Type="int" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventPlayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="PlayerId" Type="int" Nullable="false" />
+          <Property Name="EventTypeParticipantId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EventTypeName" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EventTypeParticipant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EventTypeId" Type="int" Nullable="false" />
+          <Property Name="ParticipantLabel" Type="nvarchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BeginTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GameTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GameId" Type="int" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PlayerData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerId" Type="int" Nullable="false" />
+          <Property Name="DataTypeId" Type="int" Nullable="false" />
+          <Property Name="TextData" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IntegerData" Type="int" />
+          <Property Name="FloatData" Type="float" />
+          <Property Name="TimeOfData" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlayerTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerId" Type="int" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="nvarchar" Nullable="false" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserPlayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PlayerId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Event_EventType">
+          <End Role="EventType" Type="BalboaConstrictorsModel.Store.EventType" Multiplicity="1" />
+          <End Role="Event" Type="BalboaConstrictorsModel.Store.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Event_Game">
+          <End Role="Game" Type="BalboaConstrictorsModel.Store.Game" Multiplicity="1" />
+          <End Role="Event" Type="BalboaConstrictorsModel.Store.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventAttribute1_Attribute">
+          <End Role="Attribute" Type="BalboaConstrictorsModel.Store.Attribute" Multiplicity="1" />
+          <End Role="EventAttribute" Type="BalboaConstrictorsModel.Store.EventAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attribute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventAttribute">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventPlayer_Event">
+          <End Role="Event" Type="BalboaConstrictorsModel.Store.Event" Multiplicity="1" />
+          <End Role="EventPlayer" Type="BalboaConstrictorsModel.Store.EventPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventPlayer">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventPlayer_EventTypeParticipant">
+          <End Role="EventTypeParticipant" Type="BalboaConstrictorsModel.Store.EventTypeParticipant" Multiplicity="1" />
+          <End Role="EventPlayer" Type="BalboaConstrictorsModel.Store.EventPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventTypeParticipant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventPlayer">
+              <PropertyRef Name="EventTypeParticipantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventPlayer_Player">
+          <End Role="Player" Type="BalboaConstrictorsModel.Store.Player" Multiplicity="1" />
+          <End Role="EventPlayer" Type="BalboaConstrictorsModel.Store.EventPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventPlayer">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventTypeParticipant_EventType">
+          <End Role="EventType" Type="BalboaConstrictorsModel.Store.EventType" Multiplicity="1" />
+          <End Role="EventTypeParticipant" Type="BalboaConstrictorsModel.Store.EventTypeParticipant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventTypeParticipant">
+              <PropertyRef Name="EventTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameTeam_Game">
+          <End Role="Game" Type="BalboaConstrictorsModel.Store.Game" Multiplicity="1" />
+          <End Role="GameTeam" Type="BalboaConstrictorsModel.Store.GameTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameTeam">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameTeam_Team">
+          <End Role="Team" Type="BalboaConstrictorsModel.Store.Team" Multiplicity="1" />
+          <End Role="GameTeam" Type="BalboaConstrictorsModel.Store.GameTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameTeam">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerData_DataType">
+          <End Role="DataType" Type="BalboaConstrictorsModel.Store.DataType" Multiplicity="1" />
+          <End Role="PlayerData" Type="BalboaConstrictorsModel.Store.PlayerData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerData">
+              <PropertyRef Name="DataTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerData_Player">
+          <End Role="Player" Type="BalboaConstrictorsModel.Store.Player" Multiplicity="1" />
+          <End Role="PlayerData" Type="BalboaConstrictorsModel.Store.PlayerData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerData">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerTeam_Player">
+          <End Role="Player" Type="BalboaConstrictorsModel.Store.Player" Multiplicity="1" />
+          <End Role="PlayerTeam" Type="BalboaConstrictorsModel.Store.PlayerTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerTeam">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerTeam_Team">
+          <End Role="Team" Type="BalboaConstrictorsModel.Store.Team" Multiplicity="1" />
+          <End Role="PlayerTeam" Type="BalboaConstrictorsModel.Store.PlayerTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerTeam">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPlayer_Player">
+          <End Role="Player" Type="BalboaConstrictorsModel.Store.Player" Multiplicity="1" />
+          <End Role="UserPlayer" Type="BalboaConstrictorsModel.Store.UserPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPlayer">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPlayer_User">
+          <End Role="User" Type="BalboaConstrictorsModel.Store.User" Multiplicity="1" />
+          <End Role="UserPlayer" Type="BalboaConstrictorsModel.Store.UserPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPlayer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BalboaConstrictorsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BalboaConstrictorsEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="DataTypes" EntityType="BalboaConstrictorsModel.DataType" />
+          <EntitySet Name="Events" EntityType="BalboaConstrictorsModel.Event" />
+          <EntitySet Name="EventPlayers" EntityType="BalboaConstrictorsModel.EventPlayer" />
+          <EntitySet Name="EventTypeParticipants" EntityType="BalboaConstrictorsModel.EventTypeParticipant" />
+          <EntitySet Name="Players" EntityType="BalboaConstrictorsModel.Player" />
+          <EntitySet Name="PlayerTeams" EntityType="BalboaConstrictorsModel.PlayerTeam" />
+          <EntitySet Name="sysdiagrams" EntityType="BalboaConstrictorsModel.sysdiagram" />
+          <EntitySet Name="Teams" EntityType="BalboaConstrictorsModel.Team" />
+          <EntitySet Name="Users" EntityType="BalboaConstrictorsModel.User" />
+          <EntitySet Name="UserPlayers" EntityType="BalboaConstrictorsModel.UserPlayer" />
+          <AssociationSet Name="FK_EventPlayer_Event" Association="BalboaConstrictorsModel.FK_EventPlayer_Event">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="EventPlayer" EntitySet="EventPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventPlayer_EventTypeParticipant" Association="BalboaConstrictorsModel.FK_EventPlayer_EventTypeParticipant">
+            <End Role="EventTypeParticipant" EntitySet="EventTypeParticipants" />
+            <End Role="EventPlayer" EntitySet="EventPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventPlayer_Player" Association="BalboaConstrictorsModel.FK_EventPlayer_Player">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="EventPlayer" EntitySet="EventPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerTeam_Player" Association="BalboaConstrictorsModel.FK_PlayerTeam_Player">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="PlayerTeam" EntitySet="PlayerTeams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPlayer_Player" Association="BalboaConstrictorsModel.FK_UserPlayer_Player">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="UserPlayer" EntitySet="UserPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerTeam_Team" Association="BalboaConstrictorsModel.FK_PlayerTeam_Team">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="PlayerTeam" EntitySet="PlayerTeams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPlayer_User" Association="BalboaConstrictorsModel.FK_UserPlayer_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserPlayer" EntitySet="UserPlayers" />
+          </AssociationSet>
+          <EntitySet Name="PlayerDatas" EntityType="BalboaConstrictorsModel.PlayerData" />
+          <AssociationSet Name="FK_PlayerData_DataType" Association="BalboaConstrictorsModel.FK_PlayerData_DataType">
+            <End Role="DataType" EntitySet="DataTypes" />
+            <End Role="PlayerData" EntitySet="PlayerDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerData_Player" Association="BalboaConstrictorsModel.FK_PlayerData_Player">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="PlayerData" EntitySet="PlayerDatas" />
+          </AssociationSet>
+          <EntitySet Name="Attributes" EntityType="BalboaConstrictorsModel.Attribute" />
+          <EntitySet Name="EventAttributes" EntityType="BalboaConstrictorsModel.EventAttribute" />
+          <AssociationSet Name="FK_EventAttribute1_Attribute" Association="BalboaConstrictorsModel.FK_EventAttribute1_Attribute">
+            <End Role="Attribute" EntitySet="Attributes" />
+            <End Role="EventAttribute" EntitySet="EventAttributes" />
+          </AssociationSet>
+          <EntitySet Name="EventTypes" EntityType="BalboaConstrictorsModel.EventType" />
+          <AssociationSet Name="FK_Event_EventType" Association="BalboaConstrictorsModel.FK_Event_EventType">
+            <End Role="EventType" EntitySet="EventTypes" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventTypeParticipant_EventType" Association="BalboaConstrictorsModel.FK_EventTypeParticipant_EventType">
+            <End Role="EventType" EntitySet="EventTypes" />
+            <End Role="EventTypeParticipant" EntitySet="EventTypeParticipants" />
+          </AssociationSet>
+          <EntitySet Name="Games" EntityType="BalboaConstrictorsModel.Game" />
+          <EntitySet Name="GameTeams" EntityType="BalboaConstrictorsModel.GameTeam" />
+          <AssociationSet Name="FK_Event_Game" Association="BalboaConstrictorsModel.FK_Event_Game">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameTeam_Game" Association="BalboaConstrictorsModel.FK_GameTeam_Game">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="GameTeam" EntitySet="GameTeams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameTeam_Team" Association="BalboaConstrictorsModel.FK_GameTeam_Team">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="GameTeam" EntitySet="GameTeams" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DataType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DataType1" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PlayerDatas" Relationship="BalboaConstrictorsModel.FK_PlayerData_DataType" FromRole="DataType" ToRole="PlayerData" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeOfEvent" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="GameId" Type="Int32" Nullable="false" />
+          <Property Name="EventTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EventPlayers" Relationship="BalboaConstrictorsModel.FK_EventPlayer_Event" FromRole="Event" ToRole="EventPlayer" />
+          <NavigationProperty Name="EventType" Relationship="BalboaConstrictorsModel.FK_Event_EventType" FromRole="Event" ToRole="EventType" />
+          <NavigationProperty Name="Game" Relationship="BalboaConstrictorsModel.FK_Event_Game" FromRole="Event" ToRole="Game" />
+        </EntityType>
+        <EntityType Name="EventPlayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="PlayerId" Type="Int32" Nullable="false" />
+          <Property Name="EventTypeParticipantId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="BalboaConstrictorsModel.FK_EventPlayer_Event" FromRole="EventPlayer" ToRole="Event" />
+          <NavigationProperty Name="EventTypeParticipant" Relationship="BalboaConstrictorsModel.FK_EventPlayer_EventTypeParticipant" FromRole="EventPlayer" ToRole="EventTypeParticipant" />
+          <NavigationProperty Name="Player" Relationship="BalboaConstrictorsModel.FK_EventPlayer_Player" FromRole="EventPlayer" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="EventTypeParticipant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="EventTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ParticipantLabel" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="EventPlayers" Relationship="BalboaConstrictorsModel.FK_EventPlayer_EventTypeParticipant" FromRole="EventTypeParticipant" ToRole="EventPlayer" />
+          <NavigationProperty Name="EventType" Relationship="BalboaConstrictorsModel.FK_EventTypeParticipant_EventType" FromRole="EventTypeParticipant" ToRole="EventType" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="EventPlayers" Relationship="BalboaConstrictorsModel.FK_EventPlayer_Player" FromRole="Player" ToRole="EventPlayer" />
+          <NavigationProperty Name="PlayerTeams" Relationship="BalboaConstrictorsModel.FK_PlayerTeam_Player" FromRole="Player" ToRole="PlayerTeam" />
+          <NavigationProperty Name="UserPlayers" Relationship="BalboaConstrictorsModel.FK_UserPlayer_Player" FromRole="Player" ToRole="UserPlayer" />
+          <NavigationProperty Name="PlayerDatas" Relationship="BalboaConstrictorsModel.FK_PlayerData_Player" FromRole="Player" ToRole="PlayerData" />
+        </EntityType>
+        <EntityType Name="PlayerTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerId" Type="Int32" Nullable="false" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="BalboaConstrictorsModel.FK_PlayerTeam_Player" FromRole="PlayerTeam" ToRole="Player" />
+          <NavigationProperty Name="Team" Relationship="BalboaConstrictorsModel.FK_PlayerTeam_Team" FromRole="PlayerTeam" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PlayerTeams" Relationship="BalboaConstrictorsModel.FK_PlayerTeam_Team" FromRole="Team" ToRole="PlayerTeam" />
+          <NavigationProperty Name="GameTeams" Relationship="BalboaConstrictorsModel.FK_GameTeam_Team" FromRole="Team" ToRole="GameTeam" />
+          </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserPlayers" Relationship="BalboaConstrictorsModel.FK_UserPlayer_User" FromRole="User" ToRole="UserPlayer" />
+        </EntityType>
+        <EntityType Name="UserPlayer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PlayerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="BalboaConstrictorsModel.FK_UserPlayer_Player" FromRole="UserPlayer" ToRole="Player" />
+          <NavigationProperty Name="User" Relationship="BalboaConstrictorsModel.FK_UserPlayer_User" FromRole="UserPlayer" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_EventPlayer_Event">
+          <End Role="Event" Type="BalboaConstrictorsModel.Event" Multiplicity="1" />
+          <End Role="EventPlayer" Type="BalboaConstrictorsModel.EventPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventPlayer">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventPlayer_EventTypeParticipant">
+          <End Role="EventTypeParticipant" Type="BalboaConstrictorsModel.EventTypeParticipant" Multiplicity="1" />
+          <End Role="EventPlayer" Type="BalboaConstrictorsModel.EventPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventTypeParticipant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventPlayer">
+              <PropertyRef Name="EventTypeParticipantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventPlayer_Player">
+          <End Role="Player" Type="BalboaConstrictorsModel.Player" Multiplicity="1" />
+          <End Role="EventPlayer" Type="BalboaConstrictorsModel.EventPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventPlayer">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerTeam_Player">
+          <End Role="Player" Type="BalboaConstrictorsModel.Player" Multiplicity="1" />
+          <End Role="PlayerTeam" Type="BalboaConstrictorsModel.PlayerTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerTeam">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPlayer_Player">
+          <End Role="Player" Type="BalboaConstrictorsModel.Player" Multiplicity="1" />
+          <End Role="UserPlayer" Type="BalboaConstrictorsModel.UserPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPlayer">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerTeam_Team">
+          <End Role="Team" Type="BalboaConstrictorsModel.Team" Multiplicity="1" />
+          <End Role="PlayerTeam" Type="BalboaConstrictorsModel.PlayerTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerTeam">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPlayer_User">
+          <End Role="User" Type="BalboaConstrictorsModel.User" Multiplicity="1" />
+          <End Role="UserPlayer" Type="BalboaConstrictorsModel.UserPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPlayer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PlayerData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PlayerId" Nullable="false" />
+          <Property Type="Int32" Name="DataTypeId" Nullable="false" />
+          <Property Type="String" Name="TextData" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="IntegerData" />
+          <Property Type="Double" Name="FloatData" />
+          <Property Type="DateTime" Name="TimeOfData" Nullable="false" Precision="7" />
+          <NavigationProperty Name="DataType" Relationship="BalboaConstrictorsModel.FK_PlayerData_DataType" FromRole="PlayerData" ToRole="DataType" />
+          <NavigationProperty Name="Player" Relationship="BalboaConstrictorsModel.FK_PlayerData_Player" FromRole="PlayerData" ToRole="Player" />
+        </EntityType>
+        <Association Name="FK_PlayerData_DataType">
+          <End Type="BalboaConstrictorsModel.DataType" Role="DataType" Multiplicity="1" />
+          <End Type="BalboaConstrictorsModel.PlayerData" Role="PlayerData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerData">
+              <PropertyRef Name="DataTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerData_Player">
+          <End Type="BalboaConstrictorsModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="BalboaConstrictorsModel.PlayerData" Role="PlayerData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlayerData">
+              <PropertyRef Name="PlayerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Attribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AttributeName" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EventAttributes" Relationship="BalboaConstrictorsModel.FK_EventAttribute1_Attribute" FromRole="Attribute" ToRole="EventAttribute" />
+        </EntityType>
+        <EntityType Name="EventAttribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AttributeId" Nullable="false" />
+          <Property Type="Int32" Name="EventId" Nullable="false" />
+          <NavigationProperty Name="Attribute" Relationship="BalboaConstrictorsModel.FK_EventAttribute1_Attribute" FromRole="EventAttribute" ToRole="Attribute" />
+        </EntityType>
+        <Association Name="FK_EventAttribute1_Attribute">
+          <End Type="BalboaConstrictorsModel.Attribute" Role="Attribute" Multiplicity="1" />
+          <End Type="BalboaConstrictorsModel.EventAttribute" Role="EventAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attribute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventAttribute">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="EventTypeName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Events" Relationship="BalboaConstrictorsModel.FK_Event_EventType" FromRole="EventType" ToRole="Event" />
+          <NavigationProperty Name="EventTypeParticipants" Relationship="BalboaConstrictorsModel.FK_EventTypeParticipant_EventType" FromRole="EventType" ToRole="EventTypeParticipant" />
+        </EntityType>
+        <Association Name="FK_Event_EventType">
+          <End Type="BalboaConstrictorsModel.EventType" Role="EventType" Multiplicity="1" />
+          <End Type="BalboaConstrictorsModel.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventTypeParticipant_EventType">
+          <End Type="BalboaConstrictorsModel.EventType" Role="EventType" Multiplicity="1" />
+          <End Type="BalboaConstrictorsModel.EventTypeParticipant" Role="EventTypeParticipant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventTypeParticipant">
+              <PropertyRef Name="EventTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="BeginTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="EndTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Events" Relationship="BalboaConstrictorsModel.FK_Event_Game" FromRole="Game" ToRole="Event" />
+          <NavigationProperty Name="GameTeams" Relationship="BalboaConstrictorsModel.FK_GameTeam_Game" FromRole="Game" ToRole="GameTeam" />
+        </EntityType>
+        <EntityType Name="GameTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="GameId" Nullable="false" />
+          <Property Type="Int32" Name="TeamId" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="BalboaConstrictorsModel.FK_GameTeam_Game" FromRole="GameTeam" ToRole="Game" />
+          <NavigationProperty Name="Team" Relationship="BalboaConstrictorsModel.FK_GameTeam_Team" FromRole="GameTeam" ToRole="Team" />
+        </EntityType>
+        <Association Name="FK_Event_Game">
+          <End Type="BalboaConstrictorsModel.Game" Role="Game" Multiplicity="1" />
+          <End Type="BalboaConstrictorsModel.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameTeam_Game">
+          <End Type="BalboaConstrictorsModel.Game" Role="Game" Multiplicity="1" />
+          <End Type="BalboaConstrictorsModel.GameTeam" Role="GameTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameTeam">
+              <PropertyRef Name="GameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameTeam_Team">
+          <End Type="BalboaConstrictorsModel.Team" Role="Team" Multiplicity="1" />
+          <End Type="BalboaConstrictorsModel.GameTeam" Role="GameTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GameTeam">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BalboaConstrictorsModelStoreContainer" CdmEntityContainer="BalboaConstrictorsEntities">
+          <EntitySetMapping Name="DataTypes">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.DataType">
+              <MappingFragment StoreEntitySet="DataType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DataType1" ColumnName="DataType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TimeOfEvent" ColumnName="TimeOfEvent" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="EventTypeId" ColumnName="EventTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventPlayers">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.EventPlayer">
+              <MappingFragment StoreEntitySet="EventPlayer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="EventTypeParticipantId" ColumnName="EventTypeParticipantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventTypeParticipants">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.EventTypeParticipant">
+              <MappingFragment StoreEntitySet="EventTypeParticipant">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EventTypeId" ColumnName="EventTypeId" />
+                <ScalarProperty Name="ParticipantLabel" ColumnName="ParticipantLabel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlayerTeams">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.PlayerTeam">
+              <MappingFragment StoreEntitySet="PlayerTeam">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPlayers">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.UserPlayer">
+              <MappingFragment StoreEntitySet="UserPlayer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlayerDatas">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.PlayerData">
+              <MappingFragment StoreEntitySet="PlayerData">
+                <ScalarProperty Name="TimeOfData" ColumnName="TimeOfData" />
+                <ScalarProperty Name="FloatData" ColumnName="FloatData" />
+                <ScalarProperty Name="IntegerData" ColumnName="IntegerData" />
+                <ScalarProperty Name="TextData" ColumnName="TextData" />
+                <ScalarProperty Name="DataTypeId" ColumnName="DataTypeId" />
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attributes">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.Attribute">
+              <MappingFragment StoreEntitySet="Attribute">
+                <ScalarProperty Name="AttributeName" ColumnName="AttributeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventAttributes">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.EventAttribute">
+              <MappingFragment StoreEntitySet="EventAttribute">
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventTypes">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.EventType">
+              <MappingFragment StoreEntitySet="EventType">
+                <ScalarProperty Name="EventTypeName" ColumnName="EventTypeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.Game">
+              <MappingFragment StoreEntitySet="Game">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameTeams">
+            <EntityTypeMapping TypeName="BalboaConstrictorsModel.GameTeam">
+              <MappingFragment StoreEntitySet="GameTeam">
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

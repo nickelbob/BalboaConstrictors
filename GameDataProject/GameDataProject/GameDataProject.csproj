@@ -40,10 +40,34 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.0.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.0.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Services.5.0.0\lib\net40\Microsoft.Data.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.0.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Spatial, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.0.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -122,14 +146,84 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Attribute.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BCDataService.svc.cs">
+      <DependentUpon>BCDataService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="BCDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BCDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BCDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BCDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BCDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PassingChordDiagramModel.cs" />
+    <Compile Include="Models\HeatMap1Model.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DataType.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Event.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventAttribute.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventPlayer.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventType.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventTypeParticipant.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Game.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GameTeam.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImportJSONGameDataModel.cs" />
     <Compile Include="Models\ImportKMLModel.cs" />
+    <Compile Include="Player.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerData.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerTeam.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Team.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserPlayer.cs">
+      <DependentUpon>BCDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BCDataService.svc" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -186,6 +280,23 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <EntityDeploy Include="BCDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BCDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="BCDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BCDB.edmx</DependentUpon>
+      <LastGenOutput>BCDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BCDB.edmx.diagram">
+      <DependentUpon>BCDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="BCDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BCDB.edmx</DependentUpon>
+      <LastGenOutput>BCDB.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -201,6 +312,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\webgl-heatmap.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -215,12 +327,18 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ImportKML.cshtml" />
+    <Content Include="Views\Home\ImportJSONGameData.cshtml" />
+    <Content Include="Views\Home\HeatMap1.cshtml" />
+    <Content Include="Views\Home\PassingChordDiagram.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

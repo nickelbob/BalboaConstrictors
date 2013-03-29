@@ -1,0 +1,16 @@
+﻿@model ImportJSONGameDataModel
+@using GameDataProject.Models
+@{
+    ViewBag.Title = "ImportJSONGameData";
+}
+
+<h2>ImportJSON</h2>
+
+<span>@Html.Raw(Model.Status)</span>
+
+@using (Html.BeginForm("ImportJSONGameData", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.DropDownListFor(model => model.games, Model.gameSelect)
+    <input type="file" name="file" />
+    <input type="submit" value="OK" />
+}
