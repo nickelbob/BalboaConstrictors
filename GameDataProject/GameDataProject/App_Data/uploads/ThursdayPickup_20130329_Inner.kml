@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"
+xmlns:gx="http://www.google.com/kml/ext/2.2"
+xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+<open>1</open>
+<visibility>1</visibility>
+<name><![CDATA[3/28/2013 6:21pm]]></name>
+<atom:author><atom:name><![CDATA[Created by Google My Tracks on Android.]]></atom:name></atom:author>
+<Style id="track">
+<LineStyle><color>7f0000ff</color><width>4</width></LineStyle>
+<IconStyle>
+<scale>1.3</scale>
+<Icon><href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href></Icon>
+</IconStyle>
+</Style>
+<Style id="start"><IconStyle>
+<scale>1.3</scale>
+<Icon><href>http://maps.google.com/mapfiles/kml/paddle/grn-circle.png</href></Icon>
+<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+</IconStyle></Style>
+<Style id="end"><IconStyle>
+<scale>1.3</scale>
+<Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon>
+<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+</IconStyle></Style>
+<Style id="statistics"><IconStyle>
+<scale>1.3</scale>
+<Icon><href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href></Icon>
+<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+</IconStyle></Style>
+<Style id="waypoint"><IconStyle>
+<scale>1.3</scale>
+<Icon><href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href></Icon>
+<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+</IconStyle></Style>
+<Schema id="schema">
+<gx:SimpleArrayField name="power" type="int">
+<displayName><![CDATA[Power (W)]]></displayName>
+</gx:SimpleArrayField>
+<gx:SimpleArrayField name="cadence" type="int">
+<displayName><![CDATA[Cadence (rpm)]]></displayName>
+</gx:SimpleArrayField>
+<gx:SimpleArrayField name="heart_rate" type="int">
+<displayName><![CDATA[Heart rate (bpm)]]></displayName>
+</gx:SimpleArrayField>
+</Schema>
+<Placemark>
+<name><![CDATA[3/28/2013 6:21pm (Start)]]></name>
+<description><![CDATA[]]></description>
+<TimeStamp><when>2013-03-29T01:21:33.000Z</when></TimeStamp>
+<styleUrl>#start</styleUrl>
+<Point>
+<coordinates>-117.159243,32.732461,45.0</coordinates>
+</Point>
+</Placemark>
+<Placemark id="tour">
+<name><![CDATA[3/28/2013 6:21pm]]></name>
+<description><![CDATA[]]></description>
+<styleUrl>#track</styleUrl>
+<ExtendedData>
+<Data name="type"><value><![CDATA[inner field]]></value></Data>
+</ExtendedData>
+<gx:MultiTrack>
+<altitudeMode>absolute</altitudeMode>
+<gx:interpolate>1</gx:interpolate>
+<gx:Track>
+<when>2013-03-29T01:21:33.000Z</when>
+<gx:coord>-117.159243 32.732461 45.0</gx:coord>
+<when>2013-03-29T01:21:44.000Z</when>
+<gx:coord>-117.159243 32.732461 44.0</gx:coord>
+<when>2013-03-29T01:21:45.000Z</when>
+<gx:coord>-117.159281 32.732552 38.0</gx:coord>
+<when>2013-03-29T01:21:55.000Z</when>
+<gx:coord>-117.159259 32.732584 47.0</gx:coord>
+<when>2013-03-29T01:21:56.000Z</when>
+<gx:coord>-117.159259 32.7326 47.0</gx:coord>
+<when>2013-03-29T01:21:59.000Z</when>
+<gx:coord>-117.15927 32.732643 47.0</gx:coord>
+<when>2013-03-29T01:22:00.000Z</when>
+<gx:coord>-117.159276 32.732648 47.0</gx:coord>
+<when>2013-03-29T01:22:03.000Z</when>
+<gx:coord>-117.159286 32.732686 50.0</gx:coord>
+<when>2013-03-29T01:22:04.000Z</when>
+<gx:coord>-117.15927 32.732707 49.0</gx:coord>
+<when>2013-03-29T01:22:08.000Z</when>
+<gx:coord>-117.159276 32.732745 51.0</gx:coord>
+<when>2013-03-29T01:22:09.000Z</when>
+<gx:coord>-117.159281 32.732766 51.0</gx:coord>
+<when>2013-03-29T01:22:12.000Z</when>
+<gx:coord>-117.159286 32.732804 52.0</gx:coord>
+<when>2013-03-29T01:22:13.000Z</when>
+<gx:coord>-117.159286 32.73282 52.0</gx:coord>
+<when>2013-03-29T01:22:17.000Z</when>
+<gx:coord>-117.159297 32.732863 53.0</gx:coord>
+<when>2013-03-29T01:22:18.000Z</when>
+<gx:coord>-117.159292 32.732879 53.0</gx:coord>
+<when>2013-03-29T01:22:21.000Z</when>
+<gx:coord>-117.159281 32.732917 53.0</gx:coord>
+<when>2013-03-29T01:22:22.000Z</when>
+<gx:coord>-117.159286 32.732927 53.0</gx:coord>
+<when>2013-03-29T01:22:26.000Z</when>
+<gx:coord>-117.159286 32.73297 51.0</gx:coord>
+<when>2013-03-29T01:22:27.000Z</when>
+<gx:coord>-117.159286 32.732981 51.0</gx:coord>
+<when>2013-03-29T01:22:30.000Z</when>
+<gx:coord>-117.159292 32.733024 51.0</gx:coord>
+<when>2013-03-29T01:22:31.000Z</when>
+<gx:coord>-117.159292 32.73304 52.0</gx:coord>
+<when>2013-03-29T01:22:41.000Z</when>
+<gx:coord>-117.159249 32.733056 49.0</gx:coord>
+<when>2013-03-29T01:22:42.000Z</when>
+<gx:coord>-117.159238 32.733045 49.0</gx:coord>
+<when>2013-03-29T01:22:48.000Z</when>
+<gx:coord>-117.1592 32.733029 50.0</gx:coord>
+<when>2013-03-29T01:22:49.000Z</when>
+<gx:coord>-117.15919 32.733024 51.0</gx:coord>
+<when>2013-03-29T01:22:55.000Z</when>
+<gx:coord>-117.159147 32.733008 54.0</gx:coord>
+<when>2013-03-29T01:22:56.000Z</when>
+<gx:coord>-117.159136 32.733008 54.0</gx:coord>
+<when>2013-03-29T01:23:02.000Z</when>
+<gx:coord>-117.159088 32.733013 57.0</gx:coord>
+<when>2013-03-29T01:23:03.000Z</when>
+<gx:coord>-117.159072 32.733008 58.0</gx:coord>
+<when>2013-03-29T01:23:06.000Z</when>
+<gx:coord>-117.159034 32.733002 58.0</gx:coord>
+<when>2013-03-29T01:23:07.000Z</when>
+<gx:coord>-117.159013 32.733002 58.0</gx:coord>
+<when>2013-03-29T01:23:14.000Z</when>
+<gx:coord>-117.159007 32.732959 56.0</gx:coord>
+<when>2013-03-29T01:23:15.000Z</when>
+<gx:coord>-117.159013 32.732954 55.0</gx:coord>
+<when>2013-03-29T01:23:19.000Z</when>
+<gx:coord>-117.159007 32.732917 55.0</gx:coord>
+<when>2013-03-29T01:23:20.000Z</when>
+<gx:coord>-117.159007 32.732906 55.0</gx:coord>
+<when>2013-03-29T01:23:24.000Z</when>
+<gx:coord>-117.159002 32.732868 55.0</gx:coord>
+<when>2013-03-29T01:23:25.000Z</when>
+<gx:coord>-117.158997 32.732858 56.0</gx:coord>
+<when>2013-03-29T01:23:28.000Z</when>
+<gx:coord>-117.159002 32.732825 57.0</gx:coord>
+<when>2013-03-29T01:23:29.000Z</when>
+<gx:coord>-117.159013 32.732809 56.0</gx:coord>
+<when>2013-03-29T01:23:33.000Z</when>
+<gx:coord>-117.159018 32.732766 56.0</gx:coord>
+<when>2013-03-29T01:23:34.000Z</when>
+<gx:coord>-117.159018 32.732756 56.0</gx:coord>
+<when>2013-03-29T01:23:38.000Z</when>
+<gx:coord>-117.159013 32.732718 57.0</gx:coord>
+<when>2013-03-29T01:23:39.000Z</when>
+<gx:coord>-117.159018 32.732702 56.0</gx:coord>
+<when>2013-03-29T01:23:44.000Z</when>
+<gx:coord>-117.159007 32.732659 52.0</gx:coord>
+<when>2013-03-29T01:23:45.000Z</when>
+<gx:coord>-117.159007 32.732648 52.0</gx:coord>
+<when>2013-03-29T01:23:50.000Z</when>
+<gx:coord>-117.158975 32.732622 52.0</gx:coord>
+<when>2013-03-29T01:23:51.000Z</when>
+<gx:coord>-117.158959 32.732616 51.0</gx:coord>
+<when>2013-03-29T01:23:54.000Z</when>
+<gx:coord>-117.158991 32.732643 50.0</gx:coord>
+<when>2013-03-29T01:23:55.000Z</when>
+<gx:coord>-117.158997 32.732648 50.0</gx:coord>
+<when>2013-03-29T01:23:58.000Z</when>
+<gx:coord>-117.158997 32.732605 47.0</gx:coord>
+<when>2013-03-29T01:23:59.000Z</when>
+<gx:coord>-117.158997 32.732595 48.0</gx:coord>
+<when>2013-03-29T01:24:02.000Z</when>
+<gx:coord>-117.158997 32.732557 47.0</gx:coord>
+<when>2013-03-29T01:24:03.000Z</when>
+<gx:coord>-117.159002 32.732541 47.0</gx:coord>
+<when>2013-03-29T01:24:10.000Z</when>
+<gx:coord>-117.159039 32.732509 48.0</gx:coord>
+<when>2013-03-29T01:24:11.000Z</when>
+<gx:coord>-117.159056 32.732514 48.0</gx:coord>
+<when>2013-03-29T01:24:13.000Z</when>
+<gx:coord>-117.159088 32.732514 47.0</gx:coord>
+<when>2013-03-29T01:24:14.000Z</when>
+<gx:coord>-117.159109 32.732514 47.0</gx:coord>
+<when>2013-03-29T01:24:16.000Z</when>
+<gx:coord>-117.159147 32.73252 47.0</gx:coord>
+<when>2013-03-29T01:24:17.000Z</when>
+<gx:coord>-117.159168 32.73253 47.0</gx:coord>
+<when>2013-03-29T01:24:19.000Z</when>
+<gx:coord>-117.159206 32.732525 46.0</gx:coord>
+<when>2013-03-29T01:24:20.000Z</when>
+<gx:coord>-117.159222 32.732525 46.0</gx:coord>
+<when>2013-03-29T01:24:23.000Z</when>
+<gx:coord>-117.15927 32.73253 47.0</gx:coord>
+<when>2013-03-29T01:24:24.000Z</when>
+<gx:coord>-117.159286 32.73253 48.0</gx:coord>
+<when>2013-03-29T01:24:37.000Z</when>
+<gx:coord>-117.159302 32.732509 48.0</gx:coord>
+<ExtendedData>
+<SchemaData schemaUrl="#schema">
+</SchemaData>
+</ExtendedData>
+</gx:Track>
+</gx:MultiTrack>
+</Placemark>
+<Placemark>
+<name><![CDATA[3/28/2013 6:21pm (End)]]></name>
+<description><![CDATA[Created by Google My Tracks on Android.
+
+Name: 3/28/2013 6:21pm
+Activity type: inner field
+Description: -
+Total distance: 0.19 km (0.1 mi)
+Total time: 03:05
+Moving time: 02:39
+Average speed: 3.61 km/h (2.2 mi/h)
+Average moving speed: 4.20 km/h (2.6 mi/h)
+Max speed: 7.20 km/h (4.5 mi/h)
+Average pace: 16.63 min/km (26.8 min/mi)
+Average moving pace: 14.29 min/km (23.0 min/mi)
+Fastest pace: 8.33 min/km (13.4 min/mi)
+Max elevation: 55 m (179 ft)
+Min elevation: 42 m (139 ft)
+Elevation gain: 5 m (17 ft)
+Max grade: 0 %
+Min grade: 0 %
+Recorded: 3/28/2013 6:21pm
+]]></description>
+<TimeStamp><when>2013-03-29T01:24:37.000Z</when></TimeStamp>
+<styleUrl>#end</styleUrl>
+<Point>
+<coordinates>-117.159302,32.732509,48.0</coordinates>
+</Point>
+</Placemark>
+</Document>
+</kml>

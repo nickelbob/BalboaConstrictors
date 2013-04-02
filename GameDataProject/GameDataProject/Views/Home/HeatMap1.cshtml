@@ -8,6 +8,8 @@
     var JSONPosData = jss.Serialize(Model.GPSData);
 
     var JSONBoundsData = jss.Serialize(Model.BoundaryData);
+    
+    var minMaxJson = jss.Serialize(Model.minMax);
 }
 
 
@@ -609,12 +611,9 @@
 
             var BoundaryData = @Html.Raw(JSONBoundsData);
 
-            var minX = @Model.minX;
-            var minY = @Model.minY;
-            var maxX = @Model.maxX;
-            var maxY = @Model.maxY;
-            var diffX = maxX - minX;
-            var diffY = maxY - minY;
+            var minMax = @Html.Raw(minMaxJson);
+            var diffX ;
+            var diffY ;
 
             var width = 500;
             var height = 500;
@@ -625,18 +624,31 @@
             var raf;
             var drawingInterval;
             var i = 0;
+            var game;
 
             function scaleX(x)
             {
-                return shiftX + (width*((x - minX)/diffX));
+                return shiftX + (width*((x - minMax[game].minX)/diffX));
             }
 
             function scaleY(y)
             {
-                return shiftY + (height*((y - minY)/diffY));
+                return shiftY + (height*((y - minMax[game].minY)/diffY));
             }
 
             window.onload = function(){
+                $.each(GPSData, function(key, value) {
+                    $('#GameSelect').append($("<option/>", {
+                        value: key,
+                        text: key
+                    }));
+                });
+
+                $('#GameSelect').change(function ()
+                {
+                    SelectedNewGame();
+                });
+
                 var canvas = document.getElementsByTagName('canvas')[0];
                 //var heatmap = createWebGLHeatmap({canvas: canvas, intensityToAlpha:true});
                 //var heatmap = createWebGLHeatmap({canvas: canvas, intensityToAlpha:true, gradientTexture:'deep-sea-gradient.png'});
@@ -646,16 +658,12 @@
                 // just feeding some mouse coords
                 document.body.appendChild(heatmap.canvas);
                 
-                drawingInterval = setInterval(drawNextPoint, 25);
+
+                SelectedNewGame();
 
                 
                 canvas.onclick = function(){
-                    window.clearInterval(drawingInterval);
-                    heatmap.clear();
-
-                    i = 0;
-
-                    drawingInterval = setInterval(drawNextPoint, 25);
+                    SelectedNewGame();
                 }
 
                 raf = window.requestAnimationFrame || window.mozRequestAnimationFrame;
@@ -674,24 +682,39 @@
 
 
             
-            function drawNextPoint()
+            function drawNextPoint(game)
             {
                 if(i == 0)
                 {
-                    for(var j = 0; j < BoundaryData.length; j++)
+                    for(var j = 0; j < BoundaryData[game].length; j++)
                     {
-                        heatmap.addPoint(scaleX(BoundaryData[j].x), scaleY(BoundaryData[j].y), 10, 1);
-                        console.log('Boundary - x - ' +scaleX(BoundaryData[j].x) + ' y - '+ scaleY(BoundaryData[j].y));
+                        heatmap.addPoint(scaleX(BoundaryData[game][j].x), scaleY(BoundaryData[game][j].y), 10, 1);
+                        console.log('Boundary - x - ' +scaleX(BoundaryData[game][j].x) + ' y - '+ scaleY(BoundaryData[game][j].y));
                     }
                 }
 
-                if(i >= GPSData.length)
+                if(i >= GPSData[game].length)
                     window.clearInterval(drawingInterval);
                 else{
-                    heatmap.addPoint(scaleX(GPSData[i].x), scaleY(GPSData[i].y), 50, .1);
-                    console.log('x - ' +scaleX(GPSData[i].x) + ' y - '+ scaleY(GPSData[i].y));
+                    heatmap.addPoint(scaleX(GPSData[game][i].x), scaleY(GPSData[game][i].y), 50, .1);
+                    console.log('x - ' +scaleX(GPSData[game][i].x) + ' y - '+ scaleY(GPSData[game][i].y));
                     i++;
                 }
+            }
+
+            function SelectedNewGame()
+            {
+                game = $('#GameSelect').val();
+
+                window.clearInterval(drawingInterval);
+                heatmap.clear();
+
+                i = 0;
+
+                diffX = minMax[game].maxX - minMax[game].minX;
+                diffY = minMax[game].maxY - minMax[game].minY;
+
+                drawingInterval = setInterval(function () { drawNextPoint(game); }, 25);
             }
 
         </script>
@@ -715,6 +738,7 @@
     </head>
     <body>
         <h2>HeatMap1</h2>
+        <select id="GameSelect" ></select>
         <canvas></canvas>
     </body>
 </html>

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Xml.Linq;
 using GameDataProject.Models;
+using Microsoft.VisualBasic.FileIO;
 
 namespace GameDataProject.Controllers
 {
@@ -45,7 +46,10 @@ namespace GameDataProject.Controllers
                     var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
                     model.file.SaveAs(path);
 
-                    ImportJSONGameDataFile(path, games);
+                    if(model.importJSON)
+                        ImportJSONGameDataFile(path, games);
+                    else
+                        ImportCSVGameDataFile(path, games);
                 }
 
                 model.Status = "Import Succeeded!";
@@ -58,6 +62,45 @@ namespace GameDataProject.Controllers
             return View(model);
         }
 
+        private void ImportCSVGameDataFile(string path, int gameId)
+        {
+            // TextFieldParser is in the Microsoft.VisualBasic.FileIO namespace.
+            using (TextFieldParser parser = new TextFieldParser(path))
+            {
+                parser.CommentTokens = new string[] { "#" };
+                parser.SetDelimiters(new string[] { "," });
+                parser.HasFieldsEnclosedInQuotes = false;
+
+                // Skip over header line.
+                //parser.ReadLine();
+                List<string> header = parser.ReadFields().ToList();
+                List<GameData> gameData = new List<GameData>();
+
+                while (!parser.EndOfData)
+                {
+                    string[] fields = parser.ReadFields();
+                    gameData.Add(new GameData()
+                    {
+                        who = fields[header.IndexOf("who")],
+                        what = fields[header.IndexOf("when")],
+                        when = Convert.ToDateTime(fields[header.IndexOf("when")])
+                    });
+                }
+
+                gameData = gameData.OrderBy(gd => gd.when).ThenBy(gd => gd.what).ToList();
+
+                for (int i = 0; i < gameData.Count(); i++)
+                {
+                    if (gameData[i].what == "Completed Pass" && gameData[i + 1].what == "Reception")
+                    {
+                        EnterCompletedPass(gameId, gameData[i].who, gameData[i + 1].who, gameData[i].when);
+                        i++;
+                        continue;
+                    }
+                }
+            }
+        }
+
         private void ImportJSONGameDataFile(string path, int gameId)
         {
             string JSONText = String.Empty;
@@ -68,8 +111,6 @@ namespace GameDataProject.Controllers
             }
 
             //Going to need the events "Completed Pass", "Block", and "Point"
-
-
 
             JavaScriptSerializer jss = new JavaScriptSerializer();
 
@@ -313,66 +354,76 @@ namespace GameDataProject.Controllers
         {
             HeatMap1Model model = new HeatMap1Model();
 
-            model.minY = Double.MaxValue;
-            model.minX = Double.MaxValue;
-            model.maxY = Double.MinValue;
-            model.maxX = Double.MinValue;
-
             string[] arr;
             GPSCoord g;
+            List<GPSCoord> tempList;
+            MinMaxObj minMax;
 
             using(BalboaConstrictorsEntities e = new BalboaConstrictorsEntities())
             {
-                var GPSCoords = e.PlayerDatas.Where(pd=>pd.DataType.DataType1 == "GPS");
-                foreach (var pd in GPSCoords)
+                foreach (var game in e.Games)
                 {
-                    arr = pd.TextData.Split(' ');
+                    var GPSCoords = e.PlayerDatas.Where(pd => pd.DataType.DataType1 == "GPS" && pd.TimeOfData > game.BeginTime && pd.TimeOfData < game.EndTime);
 
-                    g = new GPSCoord()
+                    minMax = new MinMaxObj();
+                    tempList = new List<GPSCoord>();
+
+                    foreach (var pd in GPSCoords)
                     {
-                        x = Convert.ToDouble(arr[0]),
-                        y = Convert.ToDouble(arr[1])
-                    };
+                        arr = pd.TextData.Split(' ');
+
+                        g = new GPSCoord()
+                        {
+                            x = Convert.ToDouble(arr[0]),
+                            y = Convert.ToDouble(arr[1])
+                        };
 
 
 
-                    if (g.x > model.maxX)
-                        model.maxX = g.x;
-                    else if (g.x < model.minX)
-                        model.minX = g.x;
-                    
-                    if (g.y < model.minY)
-                        model.minY = g.y;
-                    else if (g.y > model.maxY)
-                        model.maxY = g.y;
+                        if (g.x > minMax.maxX)
+                            minMax.maxX = g.x;
+                        else if (g.x < minMax.minX)
+                            minMax.minX = g.x;
 
-                    model.GPSData.Add(g);
-                    
-                }
+                        if (g.y < minMax.minY)
+                            minMax.minY = g.y;
+                        else if (g.y > minMax.maxY)
+                            minMax.maxY = g.y;
 
-                var BoundaryData = e.PlayerDatas.Where(pd => pd.DataType.DataType1 == "Boundary");
-                foreach (var pd in BoundaryData)
-                {
-                    arr = pd.TextData.Split(' ');
+                        tempList.Add(g);
 
-                    g = new GPSCoord()
+                    }
+
+                    model.GPSData.Add(game.BeginTime.ToString("F"), tempList);
+
+                    var BoundaryData = e.PlayerDatas.Where(pd => pd.DataType.DataType1 == "Boundary" && pd.TimeOfData > game.BeginTime && pd.TimeOfData < game.EndTime);
+                    tempList = new List<GPSCoord>();
+                    foreach (var pd in BoundaryData)
                     {
-                        x = Convert.ToDouble(arr[0]),
-                        y = Convert.ToDouble(arr[1])
-                    };
+                        arr = pd.TextData.Split(' ');
 
-                    if (g.x > model.maxX)
-                        model.maxX = g.x;
-                    else if (g.x < model.minX)
-                        model.minX = g.x;
+                        g = new GPSCoord()
+                        {
+                            x = Convert.ToDouble(arr[0]),
+                            y = Convert.ToDouble(arr[1])
+                        };
 
-                    if (g.y < model.minY)
-                        model.minY = g.y;
-                    else if (g.y > model.maxY)
-                        model.maxY = g.y;
+                        if (g.x > minMax.maxX)
+                            minMax.maxX = g.x;
+                        else if (g.x < minMax.minX)
+                            minMax.minX = g.x;
 
-                    model.BoundaryData.Add(g);
+                        if (g.y < minMax.minY)
+                            minMax.minY = g.y;
+                        else if (g.y > minMax.maxY)
+                            minMax.maxY = g.y;
 
+                        tempList.Add(g);
+
+                    }
+
+                    model.BoundaryData.Add(game.BeginTime.ToString("F"), tempList);
+                    model.minMax.Add(game.BeginTime.ToString("F"), minMax);
                 }
 
             }

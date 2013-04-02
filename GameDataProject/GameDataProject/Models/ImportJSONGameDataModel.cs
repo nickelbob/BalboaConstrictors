@@ -14,7 +14,8 @@ namespace GameDataProject.Models
             gameSelect = new List<SelectListItem>();
         }
 
-        
+
+        public bool importJSON { get; set; }
         public List<Game> games { get; set; }
         public List<SelectListItem> gameSelect { get; set; }
         public HttpPostedFileBase file { get; set; }
