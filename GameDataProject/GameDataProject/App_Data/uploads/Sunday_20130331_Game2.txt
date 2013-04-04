@@ -1,0 +1,453 @@
+who,what,when,team
+Ed,Turnover,13:00:07:011,Light
+Anon D,Block,13:00:03:908,Light
+Ed,Reception,12:59:47:811,Light
+Paul,Completed Pass,12:59:47:778,Light
+Paul,Reception,12:59:44:466,Light
+Mike M,Completed Pass,12:59:44:431,Light
+Mike M,Reception,12:59:37:224,Light
+Paul,Completed Pass,12:59:37:192,Light
+Paul,Reception,12:59:29:915,Light
+Mike,Completed Pass,12:59:29:885,Light
+Mike,Reception,12:59:24:376,Light
+Mike M,Completed Pass,12:59:24:342,Light
+Parveen D,Block,12:59:12:263,Light
+RoDeece D,Assist,12:57:54:911,Light
+Bon,Point,12:57:54:875,Light
+RoDeece D,Hammer,12:57:54:283,Dark
+Bon,Reception,12:57:53:244,Dark
+RoDeece D,Completed Pass,12:57:53:215,Dark
+RoDeece D,Reception,12:57:48:589,Dark
+Anon D,Completed Pass,12:57:48:559,Dark
+Anon L,Turnover,12:57:45:083,Light
+Parveen D,Turnover,12:57:42:892,Dark
+Parveen D,Reception,12:57:24:467,Dark
+Anon D,Completed Pass,12:57:24:437,Dark
+Mike M,Turnover,12:57:20:774,Light
+Anon D,Turnover,12:57:16:080,Dark
+Anon D,Reception,12:57:09:380,Dark
+RoDeece D,Completed Pass,12:57:09:347,Dark
+RoDeece D,Reception,12:57:02:649,Dark
+Anon D,Completed Pass,12:57:02:616,Dark
+Ed,Assist,12:55:08:978,Dark
+Mike M,Point,12:55:08:949,Dark
+Mike M,Reception,12:55:06:539,Light
+Ed,Completed Pass,12:55:06:501,Light
+Ed,Reception,12:54:59:873,Light
+Paul,Completed Pass,12:54:59:837,Light
+Paul,Reception,12:54:56:630,Light
+Ed,Completed Pass,12:54:56:593,Light
+Ed,Reception,12:54:54:640,Light
+Anon D,Completed Pass,12:54:54:609,Light
+Anon D,Drop,12:54:52:493,Dark
+Anon D,Turnover,12:54:52:456,Dark
+Anon D,Reception,12:54:51:531,Dark
+RoDeece D,Completed Pass,12:54:51:499,Dark
+RoDeece D,Reception,12:54:45:370,Dark
+Anon D,Completed Pass,12:54:45:338,Dark
+Anon D,Reception,12:54:40:721,Dark
+Julian D,Completed Pass,12:54:40:689,Dark
+Julian D,Reception,12:54:35:150,Dark
+Thuba,Completed Pass,12:54:35:116,Dark
+Thuba,Reception,12:54:33:208,Dark
+RoDeece D,Completed Pass,12:54:33:179,Dark
+Anon L,Turnover,12:54:23:255,Light
+RoDeece D,Block,12:54:16:507,Light
+Anon L,Reception,12:54:07:170,Light
+Ed,Completed Pass,12:54:07:140,Light
+Ed,Reception,12:54:04:931,Light
+Anon L,Completed Pass,12:54:04:898,Light
+Anon L,Reception,12:54:02:278,Light
+Ed,Completed Pass,12:54:02:246,Light
+Ed,Reception,12:53:59:191,Light
+Anon D,Completed Pass,12:53:59:158,Light
+Anon D,Drop,12:53:53:249,Dark
+Anon D,Turnover,12:53:53:219,Dark
+Anon D,Reception,12:53:52:107,Dark
+Julian D,Completed Pass,12:53:52:070,Dark
+Julian D,Reception,12:53:40:899,Dark
+RoDeece D,Completed Pass,12:53:40:869,Dark
+Anon L,Turnover,12:53:40:038,Light
+RoDeece D,Block,12:53:37:745,Light
+Anon L,Reception,12:53:31:629,Light
+Ed,Completed Pass,12:53:31:596,Light
+Ed,Reception,12:53:26:232,Light
+Mike M,Completed Pass,12:53:26:201,Light
+Mike M,Reception,12:53:23:064,Light
+Paul,Completed Pass,12:53:23:031,Light
+Paul,Reception,12:53:22:181,Light
+Anon L,Completed Pass,12:53:22:152,Light
+RoDeece D,Turnover,12:53:20:089,Dark
+RoDeece D,Reception,12:53:08:824,Dark
+Thuba,Completed Pass,12:53:08:793,Dark
+Thuba,Reception,12:53:04:345,Dark
+RoDeece D,Completed Pass,12:53:04:308,Dark
+Ed,Assist,12:51:40:717,Dark
+Mike,Point,12:51:40:686,Dark
+Mike,Reception,12:51:38:923,Light
+Ed,Completed Pass,12:51:38:890,Light
+Ed,Reception,12:51:32:700,Light
+Anon L,Completed Pass,12:51:32:670,Light
+Anon L,Reception,12:51:24:976,Light
+Paul,Completed Pass,12:51:24:943,Light
+Paul,Reception,12:51:18:076,Light
+Mike,Completed Pass,12:51:18:040,Light
+Mike,Reception,12:51:13:712,Light
+Ed,Completed Pass,12:51:13:680,Light
+Ed,Reception,12:51:11:938,Light
+Paul,Completed Pass,12:51:11:904,Light
+RoDeece D,Assist,12:50:19:295,Light
+Julian D,Point,12:50:19:262,Light
+Julian D,Reception,12:50:17:264,Dark
+RoDeece D,Completed Pass,12:50:17:234,Dark
+RoDeece D,Reception,12:50:11:247,Dark
+Julian D,Completed Pass,12:50:11:216,Dark
+Mike,Turnover,12:50:04:057,Light
+RoDeece D,Turnover,12:50:00:999,Dark
+Parveen D,Flick,12:49:53:039,Dark
+RoDeece D,Reception,12:49:50:312,Dark
+Parveen D,Completed Pass,12:49:50:282,Dark
+Parveen D,Reception,12:49:45:659,Dark
+RoDeece D,Completed Pass,12:49:45:629,Dark
+Anon L,Turnover,12:49:37:467,Light
+Parveen D,Block,12:49:35:068,Light
+Anon L,Reception,12:49:31:062,Light
+Mike,Completed Pass,12:49:31:031,Light
+Anon D,Turnover,12:49:29:640,Dark
+Anon D,Reception,12:49:23:809,Dark
+Julian D,Completed Pass,12:49:23:777,Dark
+Anon L,Turnover,12:49:22:642,Light
+Anon L,Reception,12:48:57:273,Light
+Ed,Completed Pass,12:48:57:244,Light
+Ed,Reception,12:48:53:853,Light
+Anon L,Completed Pass,12:48:53:817,Light
+Anon L,Reception,12:48:49:159,Light
+Paul,Completed Pass,12:48:49:128,Light
+Anon D,Turnover,12:48:47:513,Dark
+Paul,Block,12:48:45:636,Dark
+Anon D,Reception,12:48:40:550,Dark
+Parveen D,Completed Pass,12:48:40:521,Dark
+Ed,Turnover,12:48:34:552,Light
+Ed,Reception,12:48:14:464,Light
+Anon L,Completed Pass,12:48:14:433,Light
+Anon L,Reception,12:48:08:208,Light
+Ed,Completed Pass,12:48:08:175,Light
+Ed,Reception,12:48:01:729,Light
+Anon L,Completed Pass,12:48:01:696,Light
+Parveen D,Assist,12:46:21:436,Light
+RoDeece D,Point,12:46:21:404,Light
+RoDeece D,Reception,12:46:20:278,Dark
+Parveen D,Completed Pass,12:46:20:239,Dark
+Parveen D,Reception,12:46:15:440,Dark
+RoDeece D,Completed Pass,12:46:15:408,Dark
+RoDeece D,Reception,12:46:10:646,Dark
+Parveen D,Completed Pass,12:46:10:617,Dark
+Parveen D,Reception,12:46:09:637,Dark
+Julian D,Completed Pass,12:46:09:607,Dark
+Ed,Turnover,12:46:03:101,Light
+Parveen D,Block,12:45:34:354,Light
+Ed,Reception,12:45:30:899,Light
+Mike M,Completed Pass,12:45:30:870,Light
+Mike M,Reception,12:45:25:010,Light
+Anon L,Completed Pass,12:45:24:977,Light
+Parveen D,Block,12:45:17:323,Light
+Anon L,Reception,12:45:13:759,Light
+Ed,Completed Pass,12:45:13:727,Light
+Ed,Reception,12:45:04:909,Light
+Anon L,Completed Pass,12:45:04:874,Light
+RoDeece D,Assist,12:43:33:076,Light
+Julian D,Point,12:43:33:044,Light
+Julian D,Reception,12:43:31:844,Dark
+RoDeece D,Completed Pass,12:43:31:815,Dark
+Parveen D,Hammer,12:43:25:531,Dark
+RoDeece D,Reception,12:43:24:717,Dark
+Parveen D,Completed Pass,12:43:24:686,Dark
+Parveen D,Reception,12:43:18:198,Dark
+Julian D,Completed Pass,12:43:18:167,Dark
+Julian D,Reception,12:43:13:369,Dark
+Ed,Completed Pass,12:43:13:337,Dark
+Ed,Drop,12:43:01:570,Light
+Ed,Turnover,12:43:01:538,Light
+Ed,Reception,12:42:55:041,Light
+Anon L,Completed Pass,12:42:55:012,Light
+Anon L,Reception,12:42:51:592,Light
+Paul,Completed Pass,12:42:51:558,Light
+RoDeece D,Turnover,12:42:38:609,Dark
+RoDeece D,Reception,12:42:27:695,Dark
+Mike M,Completed Pass,12:42:27:667,Dark
+Mike M,Drop,12:42:25:452,Light
+Mike M,Turnover,12:42:25:416,Light
+Mike M,Reception,12:42:24:715,Light
+Paul,Completed Pass,12:42:24:683,Light
+Paul,Reception,12:42:13:337,Light
+Ed,Completed Pass,12:42:13:302,Light
+Ed,Reception,12:42:10:782,Light
+Paul,Completed Pass,12:42:10:754,Light
+Anon D,Assist,12:41:12:837,Light
+RoDeece D,Point,12:41:12:805,Light
+RoDeece D,Reception,12:41:05:742,Dark
+Anon D,Completed Pass,12:41:05:712,Dark
+Anon D,Reception,12:40:40:177,Dark
+Julian D,Completed Pass,12:40:40:148,Dark
+Julian D,Reception,12:40:33:856,Dark
+Parveen D,Completed Pass,12:40:33:825,Dark
+Mike,Turnover,12:40:32:882,Light
+Ed,Assist,12:39:29:752,Dark
+Paul,Point,12:39:29:721,Dark
+Paul,Reception,12:39:28:940,Light
+Ed,Completed Pass,12:39:28:908,Light
+Ed,Reception,12:39:26:224,Light
+Mike M,Completed Pass,12:39:26:192,Light
+Mike M,Reception,12:39:23:306,Light
+Mike,Completed Pass,12:39:23:270,Light
+Mike,Reception,12:39:20:722,Light
+Paul,Completed Pass,12:39:20:688,Light
+Paul,Reception,12:39:12:984,Light
+Mike M,Completed Pass,12:39:12:952,Light
+Mike M,Reception,12:39:10:150,Light
+Mike,Completed Pass,12:39:10:117,Light
+Mike,Reception,12:39:06:203,Light
+Mike M,Completed Pass,12:39:06:174,Light
+Mike M,Reception,12:39:01:363,Light
+Ed,Completed Pass,12:39:01:327,Light
+Ed,Reception,12:38:59:584,Light
+Paul,Completed Pass,12:38:59:551,Light
+Paul,Reception,12:38:56:603,Light
+Julian D,Completed Pass,12:38:56:575,Light
+Julian D,Drop,12:38:52:251,Dark
+Julian D,Turnover,12:38:52:221,Dark
+Julian D,Reception,12:38:50:483,Dark
+Anon D,Completed Pass,12:38:50:448,Dark
+Anon D,Reception,12:38:47:329,Dark
+Thuba,Completed Pass,12:38:47:300,Dark
+Mike,Turnover,12:38:45:493,Light
+Mike,Reception,12:38:41:780,Light
+Anon D,Completed Pass,12:38:41:750,Light
+Anon D,Drop,12:38:34:527,Dark
+Anon D,Turnover,12:38:34:495,Dark
+Anon D,Reception,12:38:33:520,Dark
+Thuba,Completed Pass,12:38:33:490,Dark
+Thuba,Reception,12:38:22:558,Dark
+Julian D,Completed Pass,12:38:22:531,Dark
+Julian D,Reception,12:38:13:930,Dark
+Todd,Completed Pass,12:38:13:898,Dark
+Todd,Reception,12:38:12:887,Dark
+Anon D,Completed Pass,12:38:12:858,Dark
+Ed,Turnover,12:38:09:781,Light
+Ed,Reception,12:37:56:758,Light
+Paul,Completed Pass,12:37:56:725,Light
+Paul,Reception,12:37:51:961,Light
+Thuba,Completed Pass,12:37:51:930,Light
+Thuba,Drop,12:37:46:291,Dark
+Thuba,Turnover,12:37:46:260,Dark
+Thuba,Reception,12:37:45:285,Dark
+Julian D,Completed Pass,12:37:45:254,Dark
+Julian D,Reception,12:37:39:250,Dark
+Todd,Completed Pass,12:37:39:218,Dark
+Mike M,Turnover,12:37:36:946,Light
+Mike M,Reception,12:37:27:427,Light
+Paul,Completed Pass,12:37:27:400,Light
+JT,Assist,12:36:24:996,Light
+Anon D,Point,12:36:24:963,Light
+JT,Backhand,12:36:23:684,Dark
+Anon D,Reception,12:36:23:044,Dark
+JT,Completed Pass,12:36:23:015,Dark
+Todd,Flick,12:36:21:076,Dark
+JT,Reception,12:36:18:696,Dark
+Todd,Completed Pass,12:36:18:664,Dark
+JT,Backhand,12:36:12:628,Dark
+Todd,Reception,12:36:12:054,Dark
+JT,Completed Pass,12:36:12:023,Dark
+Todd,Backhand,12:36:10:004,Dark
+JT,Reception,12:36:09:444,Dark
+Todd,Completed Pass,12:36:09:415,Dark
+JT,Backhand,12:36:05:452,Dark
+Todd,Reception,12:36:04:395,Dark
+JT,Completed Pass,12:36:04:367,Dark
+(null),Backhand,12:36:02:828,Dark
+Mike,Assist,12:34:41:243,Dark
+Ed,Point,12:34:41:210,Dark
+Mike,Hammer,12:34:40:137,Light
+Ed,Reception,12:34:39:051,Light
+Mike,Completed Pass,12:34:39:021,Light
+Mike M,Backhand,12:34:36:058,Light
+Mike,Reception,12:34:35:247,Light
+Mike M,Completed Pass,12:34:35:213,Light
+Paul,Backhand,12:34:32:461,Light
+Mike M,Reception,12:34:31:920,Light
+Paul,Completed Pass,12:34:31:889,Light
+Mike,Backhand,12:34:29:949,Light
+Paul,Reception,12:34:29:342,Light
+Mike,Completed Pass,12:34:29:311,Light
+Paul,Backhand,12:34:23:091,Light
+Mike,Reception,12:34:22:514,Light
+Paul,Completed Pass,12:34:22:485,Light
+Mike,Backhand,12:34:21:570,Light
+Paul,Reception,12:34:19:110,Light
+Mike,Completed Pass,12:34:19:080,Light
+Mike M,Flick,12:34:13:941,Light
+Mike,Reception,12:34:12:728,Light
+Mike M,Completed Pass,12:34:12:696,Light
+Mike M,Reception,12:34:12:008,Light
+Bon,Completed Pass,12:34:11:974,Light
+Bon,Drop,12:34:06:571,Dark
+Bon,Turnover,12:34:06:539,Dark
+Bon,Reception,12:34:05:213,Dark
+JT,Completed Pass,12:34:05:183,Dark
+Mike M,Backhand,12:33:58:465,Dark
+Mike M,Turnover,12:33:57:077,Light
+Mike,Backhand,12:33:46:678,Light
+Mike M,Reception,12:33:45:579,Light
+Mike,Completed Pass,12:33:45:545,Light
+Ed,Hammer,12:33:42:741,Light
+Mike,Reception,12:33:40:414,Light
+Ed,Completed Pass,12:33:40:384,Light
+Todd,Turnover,12:33:36:532,Dark
+Anon D,Backhand,12:33:17:513,Dark
+Todd,Reception,12:33:13:766,Dark
+Anon D,Completed Pass,12:33:13:735,Dark
+Mike,Turnover,12:33:10:060,Light
+Mike M,Backhand,12:33:00:128,Light
+Mike,Reception,12:32:57:447,Light
+Mike M,Completed Pass,12:32:57:416,Light
+Mike M,Reception,12:32:55:116,Light
+Mike,Completed Pass,12:32:55:088,Light
+Ed,Backhand,12:32:54:269,Light
+Mike,Reception,12:32:52:096,Light
+Ed,Completed Pass,12:32:52:062,Light
+Todd,Turnover,12:32:48:620,Dark
+Ed,Block,12:32:39:742,Dark
+Ed,Turnover,12:32:34:160,Light
+JT,Block,12:32:32:219,Light
+Mike,Backhand,12:32:25:500,Light
+Ed,Reception,12:32:24:286,Light
+Mike,Completed Pass,12:32:24:256,Light
+JT,Turnover,12:32:14:728,Dark
+JT,Reception,12:31:52:979,Dark
+Ed,Completed Pass,12:31:52:945,Dark
+Ed,Drop,12:31:49:939,Light
+Ed,Turnover,12:31:49:887,Light
+Ed,Reception,12:31:49:089,Light
+Mike,Completed Pass,12:31:49:058,Light
+Paul,Backhand,12:31:43:725,Light
+Mike,Reception,12:31:42:880,Light
+Paul,Completed Pass,12:31:42:849,Light
+Todd,Turnover,12:31:41:602,Dark
+JT,Backhand,12:31:36:002,Dark
+Todd,Reception,12:31:35:188,Dark
+JT,Completed Pass,12:31:35:158,Dark
+Anon D,Flick,12:31:29:315,Dark
+JT,Reception,12:31:28:598,Dark
+Anon D,Completed Pass,12:31:28:567,Dark
+Todd,Backhand,12:31:22:891,Dark
+Anon D,Reception,12:31:22:221,Dark
+Todd,Completed Pass,12:31:22:191,Dark
+Bon,Backhand,12:31:20:053,Dark
+Todd,Reception,12:31:18:742,Dark
+Bon,Completed Pass,12:31:18:713,Dark
+Ed,Turnover,12:31:14:349,Light
+Mike M,Flick,12:30:59:355,Light
+Ed,Reception,12:30:58:832,Light
+Mike M,Completed Pass,12:30:58:798,Light
+Mike,Backhand,12:30:55:361,Light
+Mike M,Reception,12:30:54:801,Light
+Mike,Completed Pass,12:30:54:772,Light
+Paul,Backhand,12:30:53:585,Light
+Mike,Reception,12:30:52:657,Light
+Paul,Completed Pass,12:30:52:629,Light
+Todd,Turnover,12:30:51:717,Dark
+JT,Backhand,12:30:41:696,Dark
+Todd,Reception,12:30:40:691,Dark
+JT,Completed Pass,12:30:40:661,Dark
+JT,Reception,12:30:35:717,Dark
+Bon,Completed Pass,12:30:35:687,Dark
+Mike,Turnover,12:30:33:324,Light
+Mike,Reception,12:30:18:832,Light
+Ed,Completed Pass,12:30:18:803,Light
+Ed,Reception,12:30:16:426,Light
+Mike M,Completed Pass,12:30:16:396,Light
+Mike M,Reception,12:30:14:159,Light
+Mike,Completed Pass,12:30:14:131,Light
+Mike,Reception,12:30:12:628,Light
+Mike M,Completed Pass,12:30:12:594,Light
+Mike M,Reception,12:30:09:062,Light
+Mike,Completed Pass,12:30:09:034,Light
+Ed,Backhand,12:30:06:134,Light
+Mike,Reception,12:30:05:557,Light
+Ed,Completed Pass,12:30:05:530,Light
+Paul,Backhand,12:30:04:518,Light
+Ed,Reception,12:30:01:961,Light
+Paul,Completed Pass,12:30:01:932,Light
+JT,Turnover,12:29:51:333,Dark
+Todd,Flick,12:29:42:728,Dark
+JT,Reception,12:29:41:817,Dark
+Todd,Completed Pass,12:29:41:788,Dark
+Mike M,Turnover,12:29:38:847,Light
+Ed,Backhand,12:29:28:758,Light
+Mike M,Reception,12:29:27:831,Light
+Ed,Completed Pass,12:29:27:801,Light
+Mike M,Flick,12:29:25:942,Light
+Ed,Reception,12:29:23:240,Light
+Mike M,Completed Pass,12:29:23:214,Light
+Mike,Flick,12:29:20:765,Light
+Mike M,Reception,12:29:19:900,Light
+Mike,Completed Pass,12:29:19:873,Light
+Ed,Hammer,12:29:17:005,Light
+Mike,Reception,12:29:15:629,Light
+Ed,Completed Pass,12:29:15:601,Light
+JT,Turnover,12:29:09:448,Dark
+Ed,Block,12:29:06:352,Dark
+Bon,Backhand,12:29:01:894,Dark
+JT,Reception,12:29:00:805,Dark
+Bon,Completed Pass,12:29:00:778,Dark
+Ed,Turnover,12:28:58:198,Light
+Anon D,Block,12:28:55:590,Light
+Anon D,Turnover,12:28:51:778,Dark
+JT,Backhand,12:28:47:013,Dark
+Anon D,Reception,12:28:45:766,Dark
+JT,Completed Pass,12:28:45:737,Dark
+Ed,Assist,12:27:54:936,Dark
+Paul,Point,12:27:54:905,Dark
+Ed,Backhand,12:27:54:168,Light
+Paul,Reception,12:27:53:358,Light
+Ed,Completed Pass,12:27:53:324,Light
+Mike M,Backhand,12:27:50:339,Light
+Ed,Reception,12:27:49:267,Light
+Mike M,Completed Pass,12:27:49:238,Light
+Mike M,Reception,12:27:48:148,Light
+Todd,Completed Pass,12:27:48:118,Light
+Todd,Drop,12:27:45:248,Dark
+Todd,Turnover,12:27:45:219,Dark
+JT,Backhand,12:27:44:147,Dark
+Todd,Reception,12:27:42:704,Dark
+JT,Completed Pass,12:27:42:582,Dark
+Mike,Turnover,12:27:41:655,Light
+Paul,Backhand,12:27:33:171,Light
+Mike,Reception,12:27:31:724,Light
+Paul,Completed Pass,12:27:31:574,Light
+Mike M,Flick,12:27:26:670,Light
+Paul,Reception,12:27:25:849,Light
+Mike M,Completed Pass,12:27:25:699,Light
+Ed,Flick,12:27:23:319,Light
+Mike M,Reception,12:27:22:010,Light
+Ed,Completed Pass,12:27:21:978,Light
+Todd,Turnover,12:27:21:372,Dark
+Todd,Reception,12:27:13:971,Dark
+Mike M,Completed Pass,12:27:13:943,Dark
+Mike M,Drop,12:27:05:865,Light
+Mike M,Turnover,12:27:05:839,Light
+Ed,Backhand,12:27:03:383,Light
+Mike M,Reception,12:27:02:568,Light
+Ed,Completed Pass,12:27:02:539,Light
+Ed,Reception,12:26:58:242,Light
+Mike,Completed Pass,12:26:58:216,Light
+Mike,Reception,12:26:56:489,Light
+Mike M,Completed Pass,12:26:56:456,Light
+Parveen D,Turnover,12:26:54:537,Dark
+Bon,Backhand,12:26:46:297,Dark
+Parveen D,Reception,12:26:45:305,Dark
+Bon,Completed Pass,12:26:45:277,Dark
+Bon,Reception,12:26:43:933,Dark
+Mike M,Completed Pass,12:26:43:899,Dark
+Mike M,Drop,12:26:40:713,Light
+Mike M,Turnover,12:26:40:685,Light

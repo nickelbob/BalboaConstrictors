@@ -11,6 +11,8 @@
 @using (Html.BeginForm("ImportJSONGameData", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.DropDownListFor(model => model.games, Model.gameSelect)
+    <span>Import JSON (uncheck for CSV)</span>@Html.CheckBoxFor(model =>model.importJSON)
+    <br />
     <input type="file" name="file" />
     <input type="submit" value="OK" />
 }

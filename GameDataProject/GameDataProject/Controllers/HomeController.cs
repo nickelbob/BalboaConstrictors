@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -79,11 +80,24 @@ namespace GameDataProject.Controllers
                 while (!parser.EndOfData)
                 {
                     string[] fields = parser.ReadFields();
+                    DateTime toe = new DateTime();
+                    if (!DateTime.TryParse(fields[header.IndexOf("when")], out toe))
+                    {
+                        using (BalboaConstrictorsEntities e = new BalboaConstrictorsEntities())
+                        {
+                            string s = e.Games.FirstOrDefault(g => g.Id == gameId).BeginTime.Date.ToShortDateString() + " " + fields[header.IndexOf("when")];
+                            s = s.Insert(s.LastIndexOf(':'), ".").Remove(s.LastIndexOf(':') + 1, 1);
+                            toe = Convert.ToDateTime(s);
+                            //toe = Convert.ToDateTime(s);
+                        }
+                    }
+
                     gameData.Add(new GameData()
                     {
                         who = fields[header.IndexOf("who")],
-                        what = fields[header.IndexOf("when")],
-                        when = Convert.ToDateTime(fields[header.IndexOf("when")])
+                        what = fields[header.IndexOf("what")],
+                        when = toe,
+                        team = fields[header.IndexOf("team")]
                     });
                 }
 
@@ -93,7 +107,7 @@ namespace GameDataProject.Controllers
                 {
                     if (gameData[i].what == "Completed Pass" && gameData[i + 1].what == "Reception")
                     {
-                        EnterCompletedPass(gameId, gameData[i].who, gameData[i + 1].who, gameData[i].when);
+                        EnterCompletedPass(gameId, gameData[i].who, gameData[i + 1].who, gameData[i].when, gameData[i].team);
                         i++;
                         continue;
                     }
@@ -122,7 +136,7 @@ namespace GameDataProject.Controllers
             {
                 if (gameData[i].what == "Completed Pass" && gameData[i+1].what == "Reception")
                 {
-                    EnterCompletedPass(gameId, gameData[i].who, gameData[i + 1].who, gameData[i].when);
+                    EnterCompletedPass(gameId, gameData[i].who, gameData[i + 1].who, gameData[i].when, "Light");
                     i++;
                     continue;
                 }
@@ -130,7 +144,7 @@ namespace GameDataProject.Controllers
 
         }
 
-        private void EnterCompletedPass(int GameId, string Passer, string Catcher, DateTime TimeOfEvent)
+        private void EnterCompletedPass(int GameId, string Passer, string Catcher, DateTime TimeOfEvent, string teamName)
         {
             using (BalboaConstrictorsEntities entity = new BalboaConstrictorsEntities())
             {
@@ -156,6 +170,26 @@ namespace GameDataProject.Controllers
                     });
                 }
 
+                PlayerTeam plyTeam = entity.PlayerTeams.FirstOrDefault(pt => pt.PlayerId == passPly.Id && pt.Team.TeamName == teamName);
+                if (plyTeam == null)
+                {
+                    var team = entity.Teams.FirstOrDefault(t=>t.TeamName == teamName);
+
+                    if(team == null)
+                    {
+                        team = entity.Teams.Add(new Team()
+                        {
+                             TeamName = teamName
+                        });
+                    }
+
+                    plyTeam = entity.PlayerTeams.Add(new PlayerTeam()
+                    {
+                        Player = passPly,
+                         Team = team
+                    });
+                }
+
                 EventType completedPass = entity.EventTypes.FirstOrDefault(e => e.EventTypeName == "Completed Pass");
 
                 if (completedPass == null)
@@ -166,31 +200,38 @@ namespace GameDataProject.Controllers
                     });
                 }
 
+                entity.SaveChanges();
+
                 EventTypeParticipant passPart = entity.EventTypeParticipants.FirstOrDefault(p => p.ParticipantLabel == "Passer" && p.EventTypeId == completedPass.Id);
                 EventTypeParticipant catchPart = entity.EventTypeParticipants.FirstOrDefault(p => p.ParticipantLabel == "Catcher" && p.EventTypeId == completedPass.Id);
 
-                if (!entity.Events.Any(e => e.GameId == GameId && e.TimeOfEvent == TimeOfEvent && e.EventTypeId == completedPass.Id))
+                entity.SaveChanges();
+
+                var events = entity.Events.Where(e => e.GameId == GameId && e.TimeOfEvent == TimeOfEvent).ToList();
+                
+
+                if (events.Where(e=> e.EventType == completedPass).Count() == 0)
                 {
 
                     Event evt = entity.Events.Add(new Event()
                     {
                         GameId = GameId,
                         TimeOfEvent = TimeOfEvent,
-                        EventTypeId = completedPass.Id
+                        EventType = completedPass
                     });
 
                     entity.EventPlayers.Add(new EventPlayer()
                     {
                         Event = evt,
-                        PlayerId = passPly.Id,
-                        EventTypeParticipantId = passPart.Id
+                        Player = passPly,
+                        EventTypeParticipant = passPart
                     });
 
                     entity.EventPlayers.Add(new EventPlayer()
                     {
                         Event = evt,
-                        PlayerId = catchPly.Id,
-                        EventTypeParticipantId = catchPart.Id
+                        Player = catchPly,
+                        EventTypeParticipant = catchPart
                     });
 
                     entity.SaveChanges();
@@ -490,6 +531,40 @@ namespace GameDataProject.Controllers
 
             return View(model);
         }
+
+        public ActionResult UnderUtilizedPeople()
+        {
+            UnderUtilizedPeopleModel model = new UnderUtilizedPeopleModel();
+            UnderUtilGameData uugameData = new UnderUtilGameData();
+
+            using (BalboaConstrictorsEntities e = new BalboaConstrictorsEntities())
+            {
+                foreach (var game in e.Games)
+                {
+                    foreach (var team in game.GameTeams)
+                    {
+                        uugameData = new UnderUtilGameData();
+                        var plyInfo = new PlayerInfo();
+                        var pasInfo = new PassInfo();
+
+                        foreach (var player in team.Team.PlayerTeams)
+                        {
+                            //Grab all game events involving ths player
+                            var playerEvents = game.Events.Where(evt => evt.EventPlayers.Any(ep => ep.PlayerId == player.PlayerId));
+
+                            //Grab number of completed passes
+                            var numCompletedPasses = playerEvents.Where(pe => pe.EventType.EventTypeName == "Completed Pass" && pe.EventPlayers.Any(ep => ep.EventTypeParticipant.ParticipantLabel == "Passer" && ep.PlayerId == player.Id)).Count();
+
+                            var numIncompletedPasses = playerEvents.Where(pe => pe.EventType.EventTypeName == "Incomplete Pass" && pe.EventPlayers.Any(ep => ep.EventTypeParticipant.ParticipantLabel == "Passer" && ep.PlayerId == player.Id)).Count();
+
+
+                        }
+                    }
+                }
+            }
+
+            return View("UnderUtilizedForceDiagram", model);
+        }
     }
 
     public class GameData
@@ -497,5 +572,6 @@ namespace GameDataProject.Controllers
         public string who { get; set; }
         public DateTime when { get; set; }
         public string what { get; set; }
+        public string team { get; set; }
     }
 }
