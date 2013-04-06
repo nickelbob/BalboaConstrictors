@@ -36,6 +36,8 @@ namespace GameDataProject.Models
 
     public class PassInfo
     {
+        public int source { get; set; }
+        public int target { get; set; }
         public int numThrows { get; set; }
         public float throwDist { get; set; }
     }

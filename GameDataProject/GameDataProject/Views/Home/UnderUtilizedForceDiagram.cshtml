@@ -5,6 +5,7 @@
     
     System.Web.Script.Serialization.JavaScriptSerializer jss = new System.Web.Script.Serialization.JavaScriptSerializer ();
 
+    var gameDataJSON = jss.Serialize(Model.underUtilGameData);
 }
 <!DOCTYPE html>
 <html>
@@ -21,90 +22,240 @@
   font: 10px sans-serif;
 }
 
+    svg
+{
+position: absolute;
+top: 0px;
+left: 300px;
+}
+
 </style>
 <body>
-    <select id="GameSelect" ></select>
-    <select id="TeamSelect" ></select>
-    <input type="checkbox" id="CompletionRate" />
-    <input type="checkbox" id="ThrowsAndCatches" />
-    <input type="checkbox" id="ThrowNumbers" />
-    <input type="checkbox" id="ThrowDist" />
+    <div style=""><select id="GameSelect" onchange="PickCorrectTeams();" ></select>
+    <select id="TeamSelect" onchange="redoGraph();"></select>
+
+    <div>Show Completion Rate : <input type="checkbox" class="chkbox" id="CompletionRate" checked="checked" /></div>
+
+    <div>Show Throws and Catches : <input type="checkbox" class="chkbox" id="ThrowsAndCatches" checked="checked" /></div>
+
+    <div>Show Throw Numbers : <input type="checkbox" class="chkbox" id="ThrowNumbers"checked="checked" /></div>
+
+    <div>Show Throw Distance : <input type="checkbox" class="chkbox" id="ThrowDist" checked="checked" /></div>
+        <div>Show Names : <input type="checkbox" class="chkbox" id="Names" checked="checked" /></div>
+
+    </div>
+    <div style="float:left;background-color:#EEFEFC;border:2px solid black; width:300px;padding: 6px;margin-top: 30px;">
+        <h2 style="font-size:1.2em;">Ultimate Frisbee Force Directed Graph</h2>
+        This graph shows the relationships between players on the same team during one game of Ultimate Frisbee. The nodes represent players (hover over them to reveal their names) and the edges represent the relationship between the two players connected by the edge.<br /><br />
+        The size of the circle representing the player signifies the activity rate of the player in terms of catches and throws. A bigger circle means the player took a more active role in the game than a player with a smaller circle. The color of a node, which takes on the stoplight spectrum, signifies the completion rate of the player. So a green circle means the player caught more of the passes directed at him or her than a player with a red circle.<br /><br />
+        The thickness of an edge represents the strength of the relationship between the two players in terms of throws to each other. A thicker edge is indicative of more throws and catches than a thin edge. The length of an edge represents the average distance of the throws between the two players.<br /><br />
+        On first glance we see that <a class="nameLink" data-name="JT" >JT</a>, <a class="nameLink" data-name="Logan" >Logan</a> and <a class="nameLink" data-name="Ed" >Ed</a> have a strong bond in terms of throws and catches between them as signified by the thick lines connecting them. We also notice that <a class="nameLink" data-name="Elena" >Elena</a>, having the greenest circle and hence the highest completion rate, is a great candidate to get more involved in the game as her circle is quite small meaning she did not receive as many passes as <a class="nameLink" data-name="Logan" >Logan</a>, <a class="nameLink" data-name="Ed" >Ed</a>, or <a class="nameLink" data-name="JT" >JT</a>.
+    </div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.svg.min.js"></script>
+    <script src="~/Scripts/jquery.svganim.min.js"></script>
+    <script src="~/Scripts/jquery.svgdom.min.js"></script>
 <script>
-    var Data = '';
+    var Data = @Html.Raw(gameDataJSON);
     var GameData = '';
 
     var width = 1060,
-        height = 700
+        height = 800;
+    var lastR;
 
-    var color = d3.scale.category20();
+    $('.chkbox').change(function ()
+    {
+        redoGraph();
+    });
+
+    $(".nameLink").hover(
+  function () {
+      var name = $(this).data('name')
+      $('svg circle').each(function(idx, ele)
+      {
+          try
+          {
+              var s = $(ele, $('svg')).children('title')[0].textContent;
+
+              if(s.indexOf(name) > -1)
+              {
+                  $(ele).data('size', $(ele).attr('r'));
+                  $(ele).animate({svgR: 50}, 500);
+                  return false;
+              }
+          }
+          catch(ex)
+          {
+          }
+      });
+  },
+  function () {
+      $('svg circle').each(function(idx, ele)
+      {
+          if(typeof $(ele).data('size') !== 'undefined')
+          {
+              $(ele).animate({svgR: $(ele).data('size')}, 500);
+          }
+          
+      });
+  }
+)
+    .css('text-decoration', 'underline');
+
 
     var svg = d3.select("body").append("svg")
         .attr("width", width)
         .attr("height", height);
 
-    var force;
-
-    function changeDiagram() {
-        var game = $('#GameSelect').val();
-        var team = $('#TeamSelect').val();
-        var comRateChk = $('#CompletionRate').val();
-        var throwsCatchesChk = $('#ThrowsAndCatches').val();
-        var throwNumChk = $('#ThrowNumbers').val();
-        var throwDistChk = $('#ThrowDist').val();
-
-        GameData = Data[game][team];
-
-        force = d3.layout.force()
-        .gravity(.001)
-        .distance(100)
-        .charge(-100)
+    var force = d3.layout.force()
+        //.gravity(.1)
+        .charge(-120)
         //.theta(2);
         .size([width, height]);
 
+    function initializeDropDowns()
+    {
+        $.each(Data, function(key, value) {
+            $('#GameSelect').append($("<option/>", {
+                value: key,
+                text: key
+            }));
+        });
+    }
+
+    function PickCorrectTeams()
+    {
+        $('#TeamSelect').find('option').remove();
+
+        $.each(Data[$('#GameSelect').val()], function(key, value) {
+            $('#TeamSelect').append($("<option/>", {
+                value: key,
+                text: key
+            }));
+        });
+
+        redoGraph();
+    }
+
+    
+
+    function redoGraph()
+    {
+        var game = $('#GameSelect').val();
+        var team = $('#TeamSelect').val();
+        var comRateChk = $('#CompletionRate').prop('checked');
+        var throwsCatchesChk = $('#ThrowsAndCatches').prop('checked');
+        var throwNumChk = $('#ThrowNumbers').prop('checked');
+        var throwDistChk = $('#ThrowDist').prop('checked');
+        var showNames = $('#Names').prop('checked');
+
+        GameData = Data[game][team];
 
         force
             .nodes(GameData.Names)
             .links(GameData.Passes)
             .linkDistance(function (link, idx) {
                 if (throwDistChk)
-                    return (1 - (link.throwDist / 20)) * 300
+                    return link.throwDist*15;
                 else
-                    return 100;
+                    return 500;
             })
             .start();
 
         var link = svg.selectAll(".link")
-            .data(GameData.Passes)
-          .enter().append("line")
-            .attr("class", "link")
-            .style("stroke-width", function (d) {
-                if (throwNumChk)
-                    return Math.sqrt(d.numThrows);
-                else
-                    return 5;
-            });
+            .data(force.links());
+
+        var maxThickness = d3.max(GameData.Passes, function(d){return d.numThrows;});
+
+        link.enter().append("line")
+           .attr("class", "link")
+           .style("stroke-width", function (d) {
+               if (throwNumChk)
+                   return (d.numThrows/maxThickness)*10;
+               else
+                   return 5;
+           });
+
+        link
+        .style("stroke-width", function (d) {
+            if (throwNumChk)
+                return (d.numThrows/maxThickness)*10;
+            else
+                return '5px';
+        });
+
+        link.exit().remove();
 
         var node = svg.selectAll(".node")
-            .data(GameData.Names)
-            .enter().append("circle")
-            .attr("class", "node")
-            .attr("r", function (d) { return d.compRate; })
-            .style("fill", function (d) { return color(d.numThrowsCatches); })
-            .call(force.drag);
+            .data(force.nodes());
 
-        node.append("image")
-        .attr("xlink:href", "https://github.com/favicon.ico")
-        .attr("x", -8)
-        .attr("y", -8)
-        .attr("width", 16)
-        .attr("height", 16);
+        var max = d3.max(GameData.Names, function(d){ return d.compRate;});
+        var min = d3.min(GameData.Names, function(d){ return d.compRate;});
 
-        node.append("text")
+        var color = d3.scale.linear()
+    .domain([min, min+((max-min)/2), max])
+    .range(["red", "yellow", "green"]);
+
+        var nodeList = node.enter().append("g")
+        .attr("class", "node")
+        .call(force.drag);
+            
+        nodeList.append("circle")
+            .attr("class","nodeCircle")
+           .style("fill", function (d) { 
+               if(comRateChk)
+               {
+                   return color(d.compRate);
+               }
+               else
+                   return "#000";
+           })
+           .attr("r", function (d) { 
+               if(throwsCatchesChk)
+               {
+                   return d.numThrowsCatches;
+               }
+               else
+                   return 10;
+           })
+            .append("title")
+      .text(function(d) { return d.Name + "- Comp. Rate " + (d.compRate*100).toFixed(0) + "%  Number of Touches : " + d.numThrowsCatches; });
+
+        nodeList.append("text")
+            .attr("class", "nodeName")
             .attr("dx", 12)
-            .attr("dy", ".35em")
-            .text(function (d) { return d.name });
+          .attr("dy", ".35em")
+          .text(function(d) 
+          { 
+              return showNames ? d.Name : ''; 
+          });
+
+        node.selectAll(".nodeName")
+        .text(function(d) 
+        { 
+            return showNames ? d.Name : ''; 
+        });
+        
+        node.selectAll(".nodeCircle")
+        .style("fill", function (d) { 
+            if(comRateChk)
+            {
+                return color(d.compRate);
+            }
+            else
+                return "steelblue";
+        })
+           .attr("r", function (d) { 
+               if(throwsCatchesChk)
+               {
+                   return d.numThrowsCatches;
+               }
+               else
+                   return 10;
+           });
+
+        node.exit().remove();
 
         force.on("tick", function () {
             link.attr("x1", function (d) { return d.source.x; })
@@ -114,7 +265,20 @@
 
             node.attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; });
         });
+
     }
+
+    initializeDropDowns();
+
+    $('#GameSelect').val('3/28/2013 4:00:00 PM Dark vs. Light');
+    $('#TeamSelect').val('Dark');
+
+    PickCorrectTeams();
+
+    
+
+    //changeDiagram();
+    //redoGraph();
 
 </script>
 </body>

@@ -103,7 +103,7 @@ namespace GameDataProject.Controllers
 
                 gameData = gameData.OrderBy(gd => gd.when).ThenBy(gd => gd.what).ToList();
 
-                for (int i = 0; i < gameData.Count(); i++)
+                for (int i = 0; i < gameData.Count() - 1; i++)
                 {
                     if (gameData[i].what == "Completed Pass" && gameData[i + 1].what == "Reception")
                     {
@@ -111,6 +111,181 @@ namespace GameDataProject.Controllers
                         i++;
                         continue;
                     }
+                    else if (gameData[i].what == "Turnover" && gameData[i+1].what == "Block")
+                    {
+                        EnterBlockedPass(gameId, gameData[i].who, gameData[i + 1].who, gameData[i].when, gameData[i].team);
+                        i++;
+                        continue;
+                    }
+                    else if (gameData[i].what == "Turnover" && gameData[i + 1].what != "Block")
+                    {
+                        EnterIncompletePass(gameId, gameData[i].who, gameData[i].when, gameData[i].team);
+                        continue;
+                    }
+                }
+            }
+        }
+
+        private void EnterIncompletePass(int GameId, string Passer, DateTime TimeOfEvent, string teamName)
+        {
+            using (BalboaConstrictorsEntities entity = new BalboaConstrictorsEntities())
+            {
+                Player passPly = entity.Players.FirstOrDefault(p => p.FirstName == Passer);
+
+                if (passPly == null)
+                {
+                    passPly = entity.Players.Add(new Player()
+                    {
+                        FirstName = Passer,
+                        LastName = ""
+                    });
+                }
+
+                PlayerTeam plyTeam = entity.PlayerTeams.FirstOrDefault(pt => pt.PlayerId == passPly.Id && pt.Team.TeamName == teamName);
+                if (plyTeam == null)
+                {
+                    var team = entity.Teams.FirstOrDefault(t => t.TeamName == teamName);
+
+                    if (team == null)
+                    {
+                        team = entity.Teams.Add(new Team()
+                        {
+                            TeamName = teamName
+                        });
+                    }
+
+                    plyTeam = entity.PlayerTeams.Add(new PlayerTeam()
+                    {
+                        Player = passPly,
+                        Team = team
+                    });
+                }
+
+                EventType incompletedPass = entity.EventTypes.FirstOrDefault(e => e.EventTypeName == "Incomplete Pass");
+
+                if (incompletedPass == null)
+                {
+                    incompletedPass = entity.EventTypes.Add(new EventType()
+                    {
+                        EventTypeName = "Incomplete Pass"
+                    });
+                }
+
+
+                EventTypeParticipant passPart = entity.EventTypeParticipants.FirstOrDefault(p => p.ParticipantLabel == "Passer" && p.EventTypeId == incompletedPass.Id);
+
+                var events = entity.Events.Where(e => e.GameId == GameId && e.TimeOfEvent == TimeOfEvent).ToList();
+
+
+                if (events.Where(e => e.EventType == incompletedPass).Count() == 0)
+                {
+
+                    Event evt = entity.Events.Add(new Event()
+                    {
+                        GameId = GameId,
+                        TimeOfEvent = TimeOfEvent,
+                        EventType = incompletedPass 
+                    });
+
+                    entity.EventPlayers.Add(new EventPlayer()
+                    {
+                        Event = evt,
+                        Player = passPly,
+                        EventTypeParticipant = passPart
+                    });
+
+                    entity.SaveChanges();
+                }
+            }
+        }
+
+        private void EnterBlockedPass(int GameId, string Passer, string Blocker, DateTime TimeOfEvent, string teamName)
+        {
+            using (BalboaConstrictorsEntities entity = new BalboaConstrictorsEntities())
+            {
+                Player passPly = entity.Players.FirstOrDefault(p => p.FirstName == Passer);
+
+                if (passPly == null)
+                {
+                    passPly = entity.Players.Add(new Player()
+                    {
+                        FirstName = Passer,
+                        LastName = ""
+                    });
+                }
+
+                Player blockPly = entity.Players.FirstOrDefault(p => p.FirstName == Blocker);
+
+                if (blockPly == null)
+                {
+                    blockPly = entity.Players.Add(new Player()
+                    {
+                        FirstName = Blocker,
+                        LastName = ""
+                    });
+                }
+
+                PlayerTeam plyTeam = entity.PlayerTeams.FirstOrDefault(pt => pt.PlayerId == passPly.Id && pt.Team.TeamName == teamName);
+                if (plyTeam == null)
+                {
+                    var team = entity.Teams.FirstOrDefault(t => t.TeamName == teamName);
+
+                    if (team == null)
+                    {
+                        team = entity.Teams.Add(new Team()
+                        {
+                            TeamName = teamName
+                        });
+                    }
+
+                    plyTeam = entity.PlayerTeams.Add(new PlayerTeam()
+                    {
+                        Player = passPly,
+                        Team = team
+                    });
+                }
+
+                EventType block = entity.EventTypes.FirstOrDefault(e => e.EventTypeName == "Block");
+
+                if (block == null)
+                {
+                    block = entity.EventTypes.Add(new EventType()
+                    {
+                        EventTypeName = "Block"
+                    });
+                }
+
+                EventTypeParticipant passPart = entity.EventTypeParticipants.FirstOrDefault(p => p.ParticipantLabel == "Passer" && p.EventTypeId == block.Id);
+                EventTypeParticipant blockPart = entity.EventTypeParticipants.FirstOrDefault(p => p.ParticipantLabel == "Blocker" && p.EventTypeId == block.Id);
+
+                var events = entity.Events.Where(e => e.GameId == GameId && e.TimeOfEvent == TimeOfEvent).ToList();
+
+
+                if (events.Where(e => e.EventType == block).Count() == 0)
+                {
+
+                    Event evt = entity.Events.Add(new Event()
+                    {
+                        GameId = GameId,
+                        TimeOfEvent = TimeOfEvent,
+                        EventType = block
+                    });
+
+                    entity.EventPlayers.Add(new EventPlayer()
+                    {
+                        Event = evt,
+                        Player = passPly,
+                        EventTypeParticipant = passPart
+                    });
+
+                    entity.EventPlayers.Add(new EventPlayer()
+                    {
+                        Event = evt,
+                        Player = blockPly,
+                        EventTypeParticipant = blockPart
+                    });
+
+                    entity.SaveChanges();
                 }
             }
         }
@@ -532,36 +707,123 @@ namespace GameDataProject.Controllers
             return View(model);
         }
 
-        public ActionResult UnderUtilizedPeople()
+        public ActionResult UnderUtilizedForceDiagram()
         {
-            UnderUtilizedPeopleModel model = new UnderUtilizedPeopleModel();
+            UnderUtilizedPeopleModel model;
             UnderUtilGameData uugameData = new UnderUtilGameData();
+            Random r = new Random();
+
+            model = Session["uuPeopleModel"] as UnderUtilizedPeopleModel;
+
+            if (model != null)
+            {
+                return View(model);
+            }
+            else
+                model = new UnderUtilizedPeopleModel();
 
             using (BalboaConstrictorsEntities e = new BalboaConstrictorsEntities())
             {
                 foreach (var game in e.Games)
                 {
+                    var gameName = game.BeginTime + " " + game.GameTeams.ElementAt(0).Team.TeamName + " vs. " + game.GameTeams.ElementAt(1).Team.TeamName;
+
+                    model.underUtilGameData.Add(gameName, new Dictionary<string, UnderUtilGameData>());
+
                     foreach (var team in game.GameTeams)
                     {
-                        uugameData = new UnderUtilGameData();
-                        var plyInfo = new PlayerInfo();
-                        var pasInfo = new PassInfo();
+                        model.underUtilGameData[gameName].Add(team.Team.TeamName, new UnderUtilGameData());
 
                         foreach (var player in team.Team.PlayerTeams)
                         {
+                            var uuGD = model.underUtilGameData[gameName][team.Team.TeamName];
+
                             //Grab all game events involving ths player
                             var playerEvents = game.Events.Where(evt => evt.EventPlayers.Any(ep => ep.PlayerId == player.PlayerId));
 
                             //Grab number of completed passes
-                            var numCompletedPasses = playerEvents.Where(pe => pe.EventType.EventTypeName == "Completed Pass" && pe.EventPlayers.Any(ep => ep.EventTypeParticipant.ParticipantLabel == "Passer" && ep.PlayerId == player.Id)).Count();
+                            var completePasses = playerEvents.Where(pe => pe.EventType.EventTypeName == "Completed Pass");
+                            //var completePass
+                            int numCompletedPasses = completePasses.Where(pe => pe.EventPlayers.Any(ep => ep.EventTypeParticipant.ParticipantLabel == "Passer" && ep.PlayerId == player.Player.Id)).Count();
 
-                            var numIncompletedPasses = playerEvents.Where(pe => pe.EventType.EventTypeName == "Incomplete Pass" && pe.EventPlayers.Any(ep => ep.EventTypeParticipant.ParticipantLabel == "Passer" && ep.PlayerId == player.Id)).Count();
+                            if (numCompletedPasses == 0)
+                                continue;
 
+                            int numIncompletedPasses = playerEvents.Where(pe => pe.EventType.EventTypeName == "Incomplete Pass" && pe.EventPlayers.Any(ep => ep.EventTypeParticipant.ParticipantLabel == "Passer" && ep.PlayerId == player.Player.Id)).Count();
+
+                            var catches = playerEvents.Where(pe => pe.EventType.EventTypeName == "Completed Pass" && pe.EventPlayers.Any(ep => ep.EventTypeParticipant.ParticipantLabel == "Catcher" && ep.PlayerId == player.Player.Id)).Count();
+
+                            uuGD.Names.Add(new PlayerInfo()
+                            {
+                                compRate =  (numCompletedPasses + numIncompletedPasses == 0 ? 0 : numCompletedPasses / ((float)numCompletedPasses + numIncompletedPasses)),
+                                Name = player.Player.FirstName + " " + player.Player.LastName,
+                                numThrowsCatches = (int)(numCompletedPasses + catches)
+                            });
+                        }
+                    }
+
+                    var eventsInGame = e.Events.Where(evt=>evt.GameId == game.Id); 
+                    
+                    foreach(var eig in eventsInGame)
+                    {
+                        if (eig.EventType.EventTypeName == "Completed Pass")
+                        {
+                            var passer = eig.EventPlayers.FirstOrDefault(ep => ep.EventTypeParticipant.ParticipantLabel == "Passer");
+                            var catcher = eig.EventPlayers.FirstOrDefault(ep => ep.EventTypeParticipant.ParticipantLabel == "Catcher");
+
+                            string teamName = e.Teams.ToList().ElementAt(0).TeamName;
+                            var findTeam = game.GameTeams.FirstOrDefault(gt => gt.Team.PlayerTeams.Any(pt => pt.Player.FirstName.Contains(passer.Player.FirstName) || passer.Player.FirstName.Contains(pt.Player.FirstName)));
+                            if (findTeam != null)
+                                teamName = findTeam.Team.TeamName;
+
+                            var team = model.underUtilGameData[gameName][teamName];
+
+                            //Find passer and catcher inside our team array
+                            int passerPos = team.Names.FindIndex(pi=>pi.Name == passer.Player.FirstName + " " + passer.Player.LastName);
+                            int catcherPos = team.Names.FindIndex(pi => pi.Name == catcher.Player.FirstName + " " + catcher.Player.LastName);
+
+                            var pass1 = team.Passes.FirstOrDefault(p => p.source == passerPos && p.target == catcherPos);
+                            var pass2 = team.Passes.FirstOrDefault(p => p.target == passerPos && p.source == catcherPos);
+
+                            if (pass1 != null)
+                            {
+                                pass1.numThrows++;
+                                pass1.throwDist = (pass1.throwDist + r.Next(5, 50)) / 2;
+                            }
+                            else if (pass2 != null)
+                            {
+                                pass2.numThrows++;
+                                pass2.throwDist = (pass2.throwDist + r.Next(5, 50)) / 2;
+                            }
+                            else
+                            {
+                                if (passerPos > -1 && catcherPos > -1)
+                                {
+                                    team.Passes.Add(new PassInfo()
+                                    {
+                                        numThrows = 1,
+                                        source = passerPos,
+                                        target = catcherPos,
+                                        throwDist = r.Next(5, 50)
+                                    });
+                                }
+                            }
 
                         }
                     }
                 }
+
+                //foreach (var evt in e.Events)
+                //{
+                //    if(evt.EventType.EventTypeName != "Completed Pass")
+                //        continue;
+
+                //    var gameName = evt.Game.BeginTime + " " + evt.Game.GameTeams.ElementAt(0).Team.TeamName + " vs. " + evt.Game.GameTeams.ElementAt(1).Team.TeamName;
+                //    var teamName = evt.
+                //}
             }
+
+            Session["uuPeopleModel"] = model;
 
             return View("UnderUtilizedForceDiagram", model);
         }
